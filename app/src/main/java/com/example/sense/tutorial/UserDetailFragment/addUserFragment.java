@@ -19,7 +19,7 @@ import com.example.sense.tutorial.R;
 import com.example.sense.tutorial.RetrofitManager.RetrofitManager;
 import com.example.sense.tutorial.UsersListFragment.RecordsListFragment;
 import com.example.sense.tutorial.Utilities.C;
-import com.example.sense.tutorial.Utilities.Validation;
+import com.example.sense.tutorial.Utilities.UserEntry;
 import java.io.File;
 import java.util.List;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
@@ -27,7 +27,7 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class addUserFragment extends Fragment implements View.OnClickListener {
 
-    private Validation validation ;
+    private UserEntry userEntry;
     private TextInputEditText inputName;
     private TextInputEditText inputMobile;
     private TextInputEditText inputEmail;
@@ -37,7 +37,8 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
     private File image = null;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+    {
         return inflater.inflate(R.layout.fragment_record_details, null);
     }
 
@@ -47,7 +48,7 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
 
         instantiateFields(view);
 
-        validation.evaluate();
+//        userEntry.evaluate();
     }
 
     @Override
@@ -59,11 +60,16 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
         }
         else if (v== insertUserButton)
         {
-            Validation.Response response = validation.evaluate();
+            if (userEntry == null) { return; }
 
-            if (response.isValid())
+            /**
+             * Evaluate text vallues and load if valid then load them to entryValues
+             */
+            UserEntry.EntryValues entryValues = userEntry.evaluate();
+
+            if (entryValues.isValid())
             {
-                (new RetrofitManager(getActivity())).addRecordToDatabase(response, image);
+                (new RetrofitManager(getActivity())).addRecordToDatabase(entryValues);
                 returnToUserList();
             }
             else
@@ -84,7 +90,10 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
         fabAddUser = (FloatingActionButton) view.findViewById(R.id.fabAddUser);
         fabAddUser.setOnClickListener(this);
 
-        if(validation == null) { validation = new Validation(getActivity(), inputName, inputMobile, inputEmail, insertUserButton); }
+        /**
+         *  userEntry will monitor text changes in the relevant fields and highlights errors
+         */
+        if(userEntry == null) { userEntry = new UserEntry(getActivity(), inputName, inputMobile, inputEmail, insertUserButton); }
 
         inputName.addTextChangedListener(new TextWatcher()
         {
@@ -102,9 +111,9 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s)
             {
-                if(!validation.isNameValid(inputName).trim().equals(""))
+                if(!userEntry.isNameValid(inputName).trim().equals(""))
                 {
-                    validation.evaluate();
+                    userEntry.evaluate();
                 }
 
             }
@@ -128,9 +137,9 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s)
             {
-                if(!validation.isNumberValid(inputMobile).trim().equals(""))
+                if(!userEntry.isNumberValid(inputMobile).trim().equals(""))
                 {
-                    validation.evaluate();
+                    userEntry.evaluate();
                 }
             }
         });
@@ -151,16 +160,16 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s)
             {
-                if(!validation.isEmailValid(inputEmail).trim().equals(""))
+                if(!userEntry.isEmailValid(inputEmail).trim().equals(""))
                 {
-                    validation.evaluate();
+                    userEntry.evaluate();
                 }
             }
         });
     }
 
     /**
-     * Called from the MainActivity when a picture is taken or selected
+     * Called when a picture is taken or selected
      */
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data)
@@ -185,6 +194,8 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
                     {
                         return;
                     }
+
+                    userEntry.setImageFile(image);
 
                     Glide.with(getActivity())
                             .load(image)

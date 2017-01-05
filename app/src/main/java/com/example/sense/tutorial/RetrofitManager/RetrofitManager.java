@@ -8,7 +8,7 @@ import com.example.sense.tutorial.RetrofitApi.API.Models.RestResponse;
 import com.example.sense.tutorial.RetrofitApi.API.Models.User;
 import com.example.sense.tutorial.RetrofitApi.IRetrofit;
 import com.example.sense.tutorial.Utilities.C;
-import com.example.sense.tutorial.Utilities.Validation;
+import com.example.sense.tutorial.Utilities.UserEntry;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.RequestBody;
@@ -24,7 +24,8 @@ import retrofit.GsonConverterFactory;
 import retrofit.Response;
 import retrofit.Retrofit;
 
-public class RetrofitManager {
+public class RetrofitManager
+{
     private Activity activity;
     private IRetrofit restApi;
 
@@ -33,7 +34,8 @@ public class RetrofitManager {
         restApi = getRetrofitObj();
     }
 
-    public void getRecordsFromDatabase() {
+    public void getRecordsFromDatabase()
+    {
         final ProgressDialog pd = getProgressDialog();
 
         Call<RestResponse> getUsers = restApi.getUsers();
@@ -59,36 +61,37 @@ public class RetrofitManager {
         });
     }
 
-    private Map<String, RequestBody> getRecord(Validation.Response record, File imageFile)
+    private Map<String, RequestBody> getRecord(UserEntry.EntryValues entryValues)
     {
 
         Map<String, RequestBody> map = new HashMap<>();
 
-        /**
-         * Load name, email, mobile
-         */
-        map.put("name", RequestBody.create(MediaType.parse("multipart/form-data"), record.getName()));
-        map.put("email", RequestBody.create(MediaType.parse("multipart/form-data"), record.getEmail()));
-        map.put("mobile", RequestBody.create(MediaType.parse("multipart/form-data"), record.getNumber()));
-
-        /**
-         * Load image to map
-         */
-        if (imageFile != null)
+        if (entryValues instanceof UserEntry.EntryValues)
         {
-            RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), imageFile);
-            map.put("image\"; filename=\"" + imageFile.getName() + "\"", fileBody);
+            /**
+             * Load name, email, mobile
+             */
+            map.put("name", RequestBody.create(MediaType.parse("multipart/form-data"), entryValues.getName()));
+            map.put("email", RequestBody.create(MediaType.parse("multipart/form-data"), entryValues.getEmail()));
+            map.put("mobile", RequestBody.create(MediaType.parse("multipart/form-data"), entryValues.getNumber()));
+
+            /**
+             * Load image to map
+             */
+            if (entryValues.getImageFile() != null )
+            {
+                RequestBody fileBody = RequestBody.create(MediaType.parse("multipart/form-data"), entryValues.getImageFile());
+                map.put("image\"; filename=\"" + entryValues.getImageFile().getName() + "\"", fileBody);
+            }
         }
 
         return map;
     }
 
-    public void addRecordToDatabase(Validation.Response record, File imageFile)
+    public void addRecordToDatabase(UserEntry.EntryValues entryValues)
     {
         final ProgressDialog pd = getProgressDialog();
-        final ArrayList<String> errors = new ArrayList<String>();
-
-        Map<String, RequestBody> map = getRecord(record, imageFile);
+        Map<String, RequestBody> map = getRecord(entryValues);
 
         if(map==null)
         {
@@ -102,18 +105,20 @@ public class RetrofitManager {
             public void onResponse(Response<RestResponse> response, Retrofit retrofit) {
                 pd.dismiss();
 
-                if (response.code() == C.NETWORK_SUCCESS_CODE) {
-                    if (response.body().getErrors().isEmpty()) {
+                if (response.code() == C.NETWORK_SUCCESS_CODE)
+                {
+                    if (response.body().getErrors().isEmpty())
+                    {
                         ArrayList<User> addedUsers = response.body().getUsers();
-
                         EventBus.getDefault().post(addedUsers);
-                        String str = "";
-                    } else {
-                        ArrayList<String> list = response.body().getErrors();
-                        String str = "";
                     }
-
-                } else {
+                    else
+                    {
+                        ArrayList<String> list = response.body().getErrors();
+                    }
+                }
+                else
+                {
                     int i = response.code();
                     String str = "";
                 }
@@ -128,10 +133,9 @@ public class RetrofitManager {
         });
     }
 
-
-    private IRetrofit getRetrofitObj() {
+    private IRetrofit getRetrofitObj()
+    {
         OkHttpClient httpClient = new OkHttpClient();
-
         httpClient.setConnectTimeout(5, TimeUnit.MINUTES);
         httpClient.setReadTimeout(5, TimeUnit.MINUTES);
         httpClient.setWriteTimeout(5, TimeUnit.MINUTES);

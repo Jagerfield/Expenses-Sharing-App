@@ -21,9 +21,7 @@ import com.example.sense.tutorial.Utilities.C;
 import org.greenrobot.eventbus.EventBus;
 import org.greenrobot.eventbus.Subscribe;
 import org.greenrobot.eventbus.ThreadMode;
-
 import java.util.ArrayList;
-
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class RecordsListFragment extends Fragment {
@@ -47,7 +45,7 @@ public class RecordsListFragment extends Fragment {
         fabAddUser = (FloatingActionButton) view.findViewById(R.id.fabAddUser);
 
         /**
-         * Add User to the DB
+         * Add User
          */
         fabAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -70,9 +68,6 @@ public class RecordsListFragment extends Fragment {
          * RetrofitManager will send back the results with EventBus
          */
 
-        /**
-         * Need to start a progressDialog
-         */
         RetrofitManager retrofitManager = new RetrofitManager(getActivity());
         retrofitManager.getRecordsFromDatabase();
 
@@ -86,11 +81,7 @@ public class RecordsListFragment extends Fragment {
             return;
         }
 
-        /**
-         * Need to stop a progressDialog, if th eprogressDialog lasts for more than a certain period then it should terminate.
-         */
         recyclerView.setAdapter(new ContactListViewAdapter(this, RecordList));
-
     }
 
     /**

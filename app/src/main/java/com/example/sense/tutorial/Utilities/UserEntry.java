@@ -3,49 +3,48 @@ package com.example.sense.tutorial.Utilities;
 import android.content.Context;
 import android.support.design.widget.TextInputEditText;
 import android.widget.Button;
-
 import com.example.sense.tutorial.R;
 
+import java.io.File;
 
-public class Validation
+public class UserEntry
 {
-    private Response response;
+    private final EntryValues entryValues;
     private Context context;
     private final TextInputEditText editName;
     private final TextInputEditText editNumber;
     private final TextInputEditText editEmail;
     private final Button userButton;
 
-    public Validation(Context context, TextInputEditText editName, TextInputEditText editNumber, TextInputEditText editEmail, Button userButton)
+    public UserEntry(Context context, TextInputEditText editName, TextInputEditText editNumber, TextInputEditText editEmail, Button userButton)
     {
         this.context = context;
         this.editName = editName;
         this.editNumber = editNumber;
         this.editEmail = editEmail;
         this.userButton = userButton;
+        entryValues = new EntryValues();
     }
 
-
-    public Response evaluate()
+    public EntryValues evaluate()
     {
-        response = new Response();
         String name = isNameValid(editName);
         String number = isNumberValid(editNumber);
         String email = isEmailValid(editEmail);
 
         if(name.isEmpty() || number.isEmpty() || email.isEmpty())
         {
-            response.result = false;
+            entryValues.result = false;
         }
         else
         {
-            response.result = true;
-            response.setName(name);
-            response.setNumber(number);
-            response.setEmail(email);
+            entryValues.result = true;
+            entryValues.setName(name);
+            entryValues.setNumber(number);
+            entryValues.setEmail(email);
         }
 
-        if (response.isValid())
+        if (entryValues.isValid())
         {
             userButton.setAlpha(1f);
             userButton.setEnabled(true);
@@ -56,7 +55,7 @@ public class Validation
             userButton.setEnabled(false);
         }
 
-        return response;
+        return entryValues;
     }
 
     public String isNameValid(TextInputEditText inputName)
@@ -117,46 +116,47 @@ public class Validation
         return email;
     }
 
-    public class Response
+    public void setImageFile(File imageFile)
     {
-        private boolean result;
+        entryValues.setImageFile(imageFile);
+    }
 
+    public class EntryValues
+    {
+        private File imageFile;
+        public File getImageFile() { return imageFile; }
+        public void setImageFile(File image) { this.imageFile = image; }
+
+        private boolean result;
         public boolean isValid() {
             return result;
         }
-
         public void setResult(boolean result) {
             this.result = result;
         }
 
+        private String name;
         public String getName() {
             return name;
         }
-
         public void setName(String name) {
             this.name = name;
         }
 
+        private String number;
         public String getNumber() {
             return number;
         }
-
         public void setNumber(String number) {
             this.number = number;
         }
 
+        private String email;
         public String getEmail() {
             return email;
         }
-
         public void setEmail(String email) {
             this.email = email;
         }
-
-        private String name;
-        private String number;
-        private String email;
-
     }
-
 }
