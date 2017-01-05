@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
-
 <RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
@@ -8,14 +7,12 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/contactListFragment"
-        android:name="com.example.sense.mobilecontactslibrary.ContactListFragment"
+        android:id="@+id/rv_usertList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".ContactList.ListFragment.ContactListFragment"
-        tools:listitem="@layout/fragment_record_list_item" />
+         />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabAddUser"

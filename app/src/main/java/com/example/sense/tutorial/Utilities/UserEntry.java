@@ -4,7 +4,6 @@ import android.content.Context;
 import android.support.design.widget.TextInputEditText;
 import android.widget.Button;
 import com.example.sense.tutorial.R;
-
 import java.io.File;
 
 public class UserEntry

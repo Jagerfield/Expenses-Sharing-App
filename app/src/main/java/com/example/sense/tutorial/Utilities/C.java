@@ -13,14 +13,13 @@ import com.example.sense.tutorial.R;
 
 public class C {
     public static final int NETWORK_SUCCESS_CODE = 200;
-
     public static final String BASE_URL = "http://10.0.0.11/retrofit_tutorial/";
     //public static final String BASE_URL = "http://retrofittutorial.esy.es/retrofit_tutorial/";
     public static final String USERS_API = "users.php";
     public static final int CHOOSE_PHOTO_CODE = 100;
-    public static final int READ_CONTACT_PERMISSION_REQUEST_CODE = 300;
+    public static final String TAG_LIB = "TAG_LIB";
 
-    public final static String[] PERMISSIONS_LIST = {
+    public final static String[] PERMISSIONS_ARRAY = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
             Manifest.permission.CAMERA
@@ -52,9 +51,10 @@ public class C {
         /**
          *  Add the new fragment
          */
+        String fragmentName = fragment.getClass().getSimpleName();
         fm.beginTransaction()
                 .add(R.id.fragment_container, fragment)
-                .addToBackStack(fragment.getClass().getSimpleName())
+                .addToBackStack(fragmentName)
                 .commit();
     }
 

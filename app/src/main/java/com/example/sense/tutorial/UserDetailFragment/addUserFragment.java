@@ -16,16 +16,18 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.sense.tutorial.R;
+import com.example.sense.tutorial.RetrofitApi.API.Models.User;
 import com.example.sense.tutorial.RetrofitManager.RetrofitManager;
-import com.example.sense.tutorial.UsersListFragment.RecordsListFragment;
+import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
 import com.example.sense.tutorial.Utilities.C;
 import com.example.sense.tutorial.Utilities.UserEntry;
 import java.io.File;
+import java.util.ArrayList;
 import java.util.List;
 import pl.aprilapps.easyphotopicker.DefaultCallback;
 import pl.aprilapps.easyphotopicker.EasyImage;
 
-public class addUserFragment extends Fragment implements View.OnClickListener {
+public class AddUserFragment extends Fragment implements View.OnClickListener {
 
     private UserEntry userEntry;
     private TextInputEditText inputName;
@@ -39,7 +41,7 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_record_details, null);
+        return inflater.inflate(R.layout.fragment_add_user, null);
     }
 
     @Override
@@ -47,8 +49,6 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
         super.onViewCreated(view, savedInstanceState);
 
         instantiateFields(view);
-
-//        userEntry.evaluate();
     }
 
     @Override
@@ -63,13 +63,28 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
             if (userEntry == null) { return; }
 
             /**
-             * Evaluate text vallues and load if valid then load them to entryValues
+             * Evaluate text vallues an load if valid to entryValues
              */
             UserEntry.EntryValues entryValues = userEntry.evaluate();
 
             if (entryValues.isValid())
             {
-                (new RetrofitManager(getActivity())).addRecordToDatabase(entryValues);
+                RetrofitManager.getNewInstance(getActivity()).addUserToDatabase(entryValues, new RetrofitManager.IRetrofitCallback() {
+
+                    @Override
+                    public void getAllUsersList(ArrayList<User> usersList)
+                    {  }
+
+                    @Override
+                    public void getOnlyAddedUsersList(ArrayList<User> addedUsersList)
+                    {
+                        if (addedUsersList != null)
+                        {
+                            String str = "";
+                        }
+                    }
+                });
+
                 returnToUserList();
             }
             else
@@ -213,7 +228,7 @@ public class addUserFragment extends Fragment implements View.OnClickListener {
 
     private void returnToUserList()
     {
-        C.launchFragment(((AppCompatActivity) getActivity()), new RecordsListFragment());
+        C.launchFragment(((AppCompatActivity) getActivity()), new UsersListFragment());
     }
 
 }

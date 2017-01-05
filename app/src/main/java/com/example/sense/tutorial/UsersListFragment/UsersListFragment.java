@@ -16,30 +16,26 @@ import com.bumptech.glide.Glide;
 import com.example.sense.tutorial.R;
 import com.example.sense.tutorial.RetrofitApi.API.Models.User;
 import com.example.sense.tutorial.RetrofitManager.RetrofitManager;
-import com.example.sense.tutorial.UserDetailFragment.addUserFragment;
+import com.example.sense.tutorial.UserDetailFragment.AddUserFragment;
 import com.example.sense.tutorial.Utilities.C;
-import org.greenrobot.eventbus.EventBus;
-import org.greenrobot.eventbus.Subscribe;
-import org.greenrobot.eventbus.ThreadMode;
 import java.util.ArrayList;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class RecordsListFragment extends Fragment {
+public class UsersListFragment extends Fragment {
     private RecyclerView recyclerView;
     private FloatingActionButton fabAddUser;
 
-    public RecordsListFragment() {
+    public UsersListFragment() {
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        EventBus.getDefault().unregister(this);
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_record_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_users_list, container, false);
         Context context = view.getContext();
 
         fabAddUser = (FloatingActionButton) view.findViewById(R.id.fabAddUser);
@@ -51,38 +47,41 @@ public class RecordsListFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                C.launchFragment(((AppCompatActivity) getActivity()), new addUserFragment());
+                C.launchFragment(((AppCompatActivity) getActivity()), new AddUserFragment());
             }
         });
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.contactListFragment);
+        recyclerView = (RecyclerView) view.findViewById(R.id.rv_usertList);
         recyclerView.setLayoutManager(new LinearLayoutManager(context));
 
-        /**
-         * Register Eventbus
-         */
-        EventBus.getDefault().register(this);
 
         /**
          * Get User's list from DB using RetrofitManager
-         * RetrofitManager will send back the results with EventBus
+         * RetrofitManager will send back the results with a callback
          */
 
-        RetrofitManager retrofitManager = new RetrofitManager(getActivity());
-        retrofitManager.getRecordsFromDatabase();
+        final UsersListFragment fragment = this;
+
+        RetrofitManager.getNewInstance(getActivity()).getUsersFromDatabase(new RetrofitManager.IRetrofitCallback() {
+
+            @Override
+            public void getAllUsersList(ArrayList<User> usersList)
+            {
+                if (usersList != null)
+                {
+                    recyclerView.setAdapter(new ContactListViewAdapter(fragment, usersList));
+                }
+            }
+
+            @Override
+            public void getOnlyAddedUsersList(ArrayList<User> usersList) {
+
+            }
+        });
 
         return view;
     }
 
-    @Subscribe(threadMode = ThreadMode.MAIN)
-    public void onGreenRobotEvent(ArrayList<User> RecordList) {
-
-        if (RecordList == null) {
-            return;
-        }
-
-        recyclerView.setAdapter(new ContactListViewAdapter(this, RecordList));
-    }
 
     /**
      * Fragment User List Adapter
@@ -91,11 +90,11 @@ public class RecordsListFragment extends Fragment {
      */
     private class ContactListViewAdapter extends RecyclerView.Adapter<ContactListViewAdapter.ViewHolder> {
 
-        private RecordsListFragment fragment;
+        private UsersListFragment fragment;
         private Context context;
         private ArrayList<User> userList = new ArrayList<>();
 
-        public ContactListViewAdapter(RecordsListFragment fragment, ArrayList<User> userList) {
+        public ContactListViewAdapter(UsersListFragment fragment, ArrayList<User> userList) {
             this.fragment = fragment;
             context = fragment.getActivity();
             this.userList = userList;
@@ -103,7 +102,7 @@ public class RecordsListFragment extends Fragment {
 
         @Override
         public ContactListViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_record_list_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_users_list_item, parent, false);
             return new ViewHolder(view);
         }
 

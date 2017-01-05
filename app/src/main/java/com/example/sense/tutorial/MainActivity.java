@@ -1,16 +1,20 @@
 package com.example.sense.tutorial;
 
-import android.Manifest;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.ContextCompat;
+import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
+import android.widget.Toast;
 import com.example.sense.tutorial.RetrofitApi.IRetrofit;
-import com.example.sense.tutorial.UserDetailFragment.addUserFragment;
-import com.example.sense.tutorial.UsersListFragment.RecordsListFragment;
+import com.example.sense.tutorial.UserDetailFragment.AddUserFragment;
+import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
 import com.example.sense.tutorial.Utilities.C;
+import jagerfield.utilities.lib.AppUtilities;
+import jagerfield.utilities.lib.PermissionsUtil.PermissionsUtil;
+import jagerfield.utilities.lib.PermissionsUtil.Results.IGetPermissionResult;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,25 +25,81 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        C.launchFragment(this, new RecordsListFragment());
-
+        checkPermissions();
     }
 
-    private void checkPermission() {
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED && ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            C.launchFragment(this, new RecordsListFragment());
-        } else {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                requestPermissions(new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE}, C.READ_CONTACT_PERMISSION_REQUEST_CODE);
+    public void checkPermissions()
+    {
+        PermissionsUtil permissionsUtil = AppUtilities.getPermissionUtil(this);
+        IGetPermissionResult result = permissionsUtil.getPermissionResults(C.PERMISSIONS_ARRAY);
+
+        if (result.isGranted())
+        {
+            C.launchFragment(this, new UsersListFragment());
+        }
+        else if (!result.isGranted() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+        {
+            //There are missing permissions ask for them
+            permissionsUtil.requestPermissions(C.PERMISSIONS_ARRAY);
+        }
+        else if (!result.isGranted() && Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+        {
+            //For SDK less than M, there are permissions missing in the manifest
+            String missingPermissions = TextUtils.join(", ", result.getMissingInManifest_ForSdkBelowM()).trim();
+            Toast.makeText(this, "Following permissions are missing : " + missingPermissions, Toast.LENGTH_LONG).show();
+            Log.e(C.TAG_LIB, "Following permissions are missing : " + missingPermissions);
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        //No call for super(). Bug on API Level > 11.
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
+    {
+        PermissionsUtil permissionsUtil = AppUtilities.getPermissionUtil(this);
+
+        if (requestCode == permissionsUtil.getPermissionsReqCodeId())
+        {
+            IGetPermissionResult result = null;
+            result = permissionsUtil.getPermissionResults(C.PERMISSIONS_ARRAY);
+
+            if (result == null) { return; }
+
+            if (result.isGranted())
+            {
+                C.launchFragment(this, new UsersListFragment());
+            }
+            else
+            {
+                //For SDK >= M, there are permissions missing and you can get them.
+                String deniedPermissions = TextUtils.join(", ", result.getUserDeniedPermissionsList()).trim();
+                String neverAskAgainPermissions = TextUtils.join(", ", result.getNeverAskAgainPermissionsList()).trim();
+
+                String missingPermissions = "";
+
+                if (!deniedPermissions.isEmpty())
+                {
+                    if (!neverAskAgainPermissions.isEmpty())
+                    {
+                        neverAskAgainPermissions = ", " + neverAskAgainPermissions;
+                    }
+
+                    missingPermissions = deniedPermissions + neverAskAgainPermissions;
+                }
+                else
+                {
+                    missingPermissions = neverAskAgainPermissions;
+                }
+
+                Toast.makeText(this, "Following permissions are missing : " + missingPermissions, Toast.LENGTH_LONG).show();
+                return;
             }
         }
     }
 
-    public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
-        if (requestCode == C.READ_CONTACT_PERMISSION_REQUEST_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED && grantResults[1] == PackageManager.PERMISSION_GRANTED) {
-            C.launchFragment(this, new RecordsListFragment());
-        }
-    }
 
     /**
      * Forward the back press to the current fragment
@@ -48,18 +108,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed()
     {
-        Fragment currentFragment = getSupportFragmentManager().findFragmentById(R.id.fragment_container);
-
-        if (currentFragment==null)
-        {
-            return;
-        }
-
         for (Fragment fragment : getSupportFragmentManager().getFragments())
         {
-            if (fragment == currentFragment)
+            if (fragment.getClass().getSimpleName().equals("AddUserFragment"))
             {
-                ((addUserFragment)fragment).onFragmentBackPress();
+                ((AddUserFragment)fragment).onFragmentBackPress();
             }
         }
 

@@ -3,7 +3,6 @@ package com.example.sense.tutorial.RetrofitManager;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.view.Window;
-
 import com.example.sense.tutorial.RetrofitApi.API.Models.RestResponse;
 import com.example.sense.tutorial.RetrofitApi.API.Models.User;
 import com.example.sense.tutorial.RetrofitApi.IRetrofit;
@@ -12,8 +11,6 @@ import com.example.sense.tutorial.Utilities.UserEntry;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.RequestBody;
-import org.greenrobot.eventbus.EventBus;
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
@@ -28,13 +25,20 @@ public class RetrofitManager
 {
     private Activity activity;
     private IRetrofit restApi;
+    private IRetrofitCallback clientCallback;
 
-    public RetrofitManager(Activity activity) {
+    public RetrofitManager(Activity activity)
+    {
         this.activity = activity;
         restApi = getRetrofitObj();
     }
 
-    public void getRecordsFromDatabase()
+    public static RetrofitManager getNewInstance(Activity activity)
+    {
+        return new RetrofitManager(activity);
+    }
+
+    public void getUsersFromDatabase(final IRetrofitCallback clientCallback)
     {
         final ProgressDialog pd = getProgressDialog();
 
@@ -47,8 +51,8 @@ public class RetrofitManager
                 if (response.code() == C.NETWORK_SUCCESS_CODE) {
                     if (response.body().getErrors().isEmpty()) {
                         ArrayList<User> users = response.body().getUsers();
-                        EventBus.getDefault().post(users);
-                        String str = "";
+
+                        clientCallback.getAllUsersList(users);
                     }
                 }
             }
@@ -61,7 +65,7 @@ public class RetrofitManager
         });
     }
 
-    private Map<String, RequestBody> getRecord(UserEntry.EntryValues entryValues)
+    private Map<String, RequestBody> getUSerValues(UserEntry.EntryValues entryValues)
     {
 
         Map<String, RequestBody> map = new HashMap<>();
@@ -88,10 +92,10 @@ public class RetrofitManager
         return map;
     }
 
-    public void addRecordToDatabase(UserEntry.EntryValues entryValues)
+    public void addUserToDatabase(UserEntry.EntryValues entryValues, final IRetrofitCallback clientCallback)
     {
         final ProgressDialog pd = getProgressDialog();
-        Map<String, RequestBody> map = getRecord(entryValues);
+        Map<String, RequestBody> map = getUSerValues(entryValues);
 
         if(map==null)
         {
@@ -110,7 +114,7 @@ public class RetrofitManager
                     if (response.body().getErrors().isEmpty())
                     {
                         ArrayList<User> addedUsers = response.body().getUsers();
-                        EventBus.getDefault().post(addedUsers);
+                        clientCallback.getOnlyAddedUsersList(addedUsers);
                     }
                     else
                     {
@@ -160,5 +164,10 @@ public class RetrofitManager
         return pd;
     }
 
+    public interface IRetrofitCallback
+    {
+        void getAllUsersList(ArrayList<User> usersList);
+        void getOnlyAddedUsersList(ArrayList<User> addedUsersList);
+    }
 
 }
