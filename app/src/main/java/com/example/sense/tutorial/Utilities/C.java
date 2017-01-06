@@ -14,7 +14,6 @@ import com.example.sense.tutorial.R;
 public class C {
     public static final int NETWORK_SUCCESS_CODE = 200;
     public static final String BASE_URL = "http://10.0.0.11/retrofit_tutorial/";
-    //public static final String BASE_URL = "http://retrofittutorial.esy.es/retrofit_tutorial/";
     public static final String USERS_API = "users.php";
     public static final int CHOOSE_PHOTO_CODE = 100;
     public static final String TAG_LIB = "TAG_LIB";

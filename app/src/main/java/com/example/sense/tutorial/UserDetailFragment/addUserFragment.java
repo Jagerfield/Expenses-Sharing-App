@@ -80,6 +80,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                     {
                         if (addedUsersList != null)
                         {
+                            Toast.makeText(getActivity(), "User : " + addedUsersList.get(0).getName() + " is saved", Toast.LENGTH_LONG).show();
                             String str = "";
                         }
                     }
