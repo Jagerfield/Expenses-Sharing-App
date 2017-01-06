@@ -12,6 +12,7 @@ The following will be implemented:
 1. Verify phone number using Facebook Account Kit.
 2. Use Google Cloud Messaging (GCM) for push nitifications.
 3. Develop the backend, that includes database tables and RESTful Web Service in PHP. 
+4.  Develop core logic for the app and GUI using material design guidlines.
 ```
 
 
