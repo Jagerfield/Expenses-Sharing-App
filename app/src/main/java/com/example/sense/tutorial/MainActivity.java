@@ -1,5 +1,6 @@
 package com.example.sense.tutorial;
 
+import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -12,6 +13,7 @@ import com.example.sense.tutorial.UserDetailFragment.AddUserFragment;
 import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
 import com.example.sense.tutorial.Utilities.C;
 import jagerfield.utilities.lib.AppUtilities;
+import jagerfield.utilities.lib.PermissionsUtil.GuiDialog.PermissionsManager;
 import jagerfield.utilities.lib.PermissionsUtil.PermissionsUtil;
 import jagerfield.utilities.lib.PermissionsUtil.Results.IGetPermissionResult;
 
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
         //No call for super(). Bug on API Level > 11.
     }
 
+
     @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
     {
@@ -63,39 +66,35 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == permissionsUtil.getPermissionsReqCodeId())
         {
             IGetPermissionResult result = null;
-            result = permissionsUtil.getPermissionResults(C.PERMISSIONS_ARRAY);
-
-            if (result == null) { return; }
+            result = permissionsUtil.getPermissionResults(permissions);
 
             if (result.isGranted())
             {
                 C.launchFragment(this, new UsersListFragment());
-            }
-            else
-            {
-                //For SDK >= M, there are permissions missing and you can get them.
-                String deniedPermissions = TextUtils.join(", ", result.getUserDeniedPermissionsList()).trim();
-                String neverAskAgainPermissions = TextUtils.join(", ", result.getNeverAskAgainPermissionsList()).trim();
-
-                String missingPermissions = "";
-
-                if (!deniedPermissions.isEmpty())
-                {
-                    if (!neverAskAgainPermissions.isEmpty())
-                    {
-                        neverAskAgainPermissions = ", " + neverAskAgainPermissions;
-                    }
-
-                    missingPermissions = deniedPermissions + neverAskAgainPermissions;
-                }
-                else
-                {
-                    missingPermissions = neverAskAgainPermissions;
-                }
-
-                Toast.makeText(this, "Following permissions are missing : " + missingPermissions, Toast.LENGTH_LONG).show();
                 return;
             }
+
+            final AppCompatActivity activity = this;
+
+            PermissionsManager.getNewInstance(activity, result, permissions, new PermissionsManager.PermissionsManagerCallback()
+            {
+                @Override
+                public void onPermissionsGranted(IGetPermissionResult result) {
+
+                    /**
+                     * User accepted all requested permissions
+                     */
+
+                    C.launchFragment(activity, new UsersListFragment());
+                }
+
+                @Override
+                public void onPermissionsMissing(IGetPermissionResult result)
+                {
+                    //Write your code here
+                    Toast.makeText(MainActivity.this, "User didn't accept all permissions", Toast.LENGTH_LONG).show();
+                }
+            });
         }
     }
 
