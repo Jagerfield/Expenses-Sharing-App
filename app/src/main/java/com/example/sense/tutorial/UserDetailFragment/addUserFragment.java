@@ -1,5 +1,6 @@
 package com.example.sense.tutorial.UserDetailFragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -8,6 +9,7 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,7 +43,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
     {
-        return inflater.inflate(R.layout.fragment_add_user, null);
+        return inflater.inflate(R.layout.fragment_new_user, null);
     }
 
     @Override
@@ -69,7 +71,8 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
 
             if (entryValues.isValid())
             {
-                RetrofitManager.getNewInstance(getActivity()).addUserToDatabase(entryValues, new RetrofitManager.IRetrofitCallback() {
+                final Activity activity = getActivity();
+                RetrofitManager.getNewInstance(activity).addUserToDatabase(entryValues, new RetrofitManager.IRetrofitCallback() {
 
                     @Override
                     public void getAllUsersList(ArrayList<User> usersList)
@@ -80,7 +83,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                     {
                         if (addedUsersList != null)
                         {
-                            Toast.makeText(getActivity(), "User : " + addedUsersList.get(0).getName() + " is saved", Toast.LENGTH_LONG).show();
+                            if (activity == null){return;}
+                            Toast.makeText(activity, "User : " + addedUsersList.get(0).getName() + " is saved", Toast.LENGTH_LONG).show();
+                            Log.e(C.TAG_LIB, "User : " + addedUsersList.get(0).getName() + " is saved");
                             String str = "";
                         }
                     }

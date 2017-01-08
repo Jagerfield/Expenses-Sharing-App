@@ -44,4 +44,5 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     compile 'com.github.jkwiecien:EasyImage:1.4.1'
     compile 'com.github.Jagerfield:android-Utilities-Library:v2.1'
+    compile 'com.github.Jagerfield:Mobile-Contacts-Library:v1.6'
 }

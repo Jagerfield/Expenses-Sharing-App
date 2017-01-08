@@ -2,11 +2,14 @@ package com.example.sense.tutorial.Utilities;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import com.example.sense.tutorial.R;
@@ -88,5 +91,36 @@ public class C {
 
         return false;
     }
+
+//    public synchronized static boolean hasPermission(Activity activity, String permission)
+//    {
+//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
+//        {
+//            return true;
+//        }
+//
+//        if (permission==null || permission.isEmpty())
+//        {
+//
+//            return false;
+//        }
+//
+//        String[] permissionsArray = {permission};
+//
+//        for (int i = 0; i < permissionsArray.length; i++)
+//        {
+//            if (activity.checkSelfPermission(permissionsArray[i]) == PackageManager.PERMISSION_DENIED)
+//            {
+//                Log.w(TAG_LIB, permission + " permission is missing.");
+//                return false;
+//            }
+//            else
+//            {
+//                return true;
+//            }
+//        }
+//
+//        return false;
+//    }
 
 }

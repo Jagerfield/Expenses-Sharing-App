@@ -114,7 +114,10 @@ public class RetrofitManager
                     if (response.body().getErrors().isEmpty())
                     {
                         ArrayList<User> addedUsers = response.body().getUsers();
-                        clientCallback.getOnlyAddedUsersList(addedUsers);
+                        if (addedUsers!=null)
+                        {
+                            clientCallback.getOnlyAddedUsersList(addedUsers);
+                        }
                     }
                     else
                     {
@@ -140,9 +143,9 @@ public class RetrofitManager
     private IRetrofit getRetrofitObj()
     {
         OkHttpClient httpClient = new OkHttpClient();
-        httpClient.setConnectTimeout(5, TimeUnit.MINUTES);
-        httpClient.setReadTimeout(5, TimeUnit.MINUTES);
-        httpClient.setWriteTimeout(5, TimeUnit.MINUTES);
+        httpClient.setConnectTimeout(10, TimeUnit.MINUTES);
+        httpClient.setReadTimeout(10, TimeUnit.MINUTES);
+        httpClient.setWriteTimeout(10, TimeUnit.MINUTES);
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(C.BASE_URL)

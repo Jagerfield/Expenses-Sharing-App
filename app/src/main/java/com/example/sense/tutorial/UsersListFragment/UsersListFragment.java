@@ -35,7 +35,7 @@ public class UsersListFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_users_list, container, false);
+        View view = inflater.inflate(R.layout.fragment_db_users_list, container, false);
         Context context = view.getContext();
 
         fabAddUser = (FloatingActionButton) view.findViewById(R.id.fabAddUser);
@@ -102,7 +102,7 @@ public class UsersListFragment extends Fragment {
 
         @Override
         public ContactListViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_users_list_item, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_db_users_list_item, parent, false);
             return new ViewHolder(view);
         }
 
