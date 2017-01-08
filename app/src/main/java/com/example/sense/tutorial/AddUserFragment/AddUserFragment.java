@@ -1,4 +1,4 @@
-package com.example.sense.tutorial.UserDetailFragment;
+package com.example.sense.tutorial.AddUserFragment;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -18,11 +18,11 @@ import android.widget.ImageView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.sense.tutorial.R;
-import com.example.sense.tutorial.RetrofitApi.API.Models.User;
-import com.example.sense.tutorial.RetrofitManager.RetrofitManager;
+import com.example.sense.tutorial.Retrofit.User;
+import com.example.sense.tutorial.Retrofit.RetrofitManager;
 import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
 import com.example.sense.tutorial.Utilities.C;
-import com.example.sense.tutorial.Utilities.UserEntry;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +31,7 @@ import pl.aprilapps.easyphotopicker.EasyImage;
 
 public class AddUserFragment extends Fragment implements View.OnClickListener {
 
-    private UserEntry userEntry;
+    private UserEntryEvaluation userEntryEvaluation;
     private TextInputEditText inputName;
     private TextInputEditText inputMobile;
     private TextInputEditText inputEmail;
@@ -62,12 +62,12 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
         }
         else if (v== insertUserButton)
         {
-            if (userEntry == null) { return; }
+            if (userEntryEvaluation == null) { return; }
 
             /**
              * Evaluate text vallues an load if valid to entryValues
              */
-            UserEntry.EntryValues entryValues = userEntry.evaluate();
+            UserEntryEvaluation.EntryValues entryValues = userEntryEvaluation.evaluate();
 
             if (entryValues.isValid())
             {
@@ -112,9 +112,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
         fabAddUser.setOnClickListener(this);
 
         /**
-         *  userEntry will monitor text changes in the relevant fields and highlights errors
+         *  userEntryEvaluation will monitor text changes in the relevant fields and highlights errors
          */
-        if(userEntry == null) { userEntry = new UserEntry(getActivity(), inputName, inputMobile, inputEmail, insertUserButton); }
+        if(userEntryEvaluation == null) { userEntryEvaluation = new UserEntryEvaluation(getActivity(), inputName, inputMobile, inputEmail, insertUserButton); }
 
         inputName.addTextChangedListener(new TextWatcher()
         {
@@ -132,9 +132,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s)
             {
-                if(!userEntry.isNameValid(inputName).trim().equals(""))
+                if(!userEntryEvaluation.isNameValid(inputName).trim().equals(""))
                 {
-                    userEntry.evaluate();
+                    userEntryEvaluation.evaluate();
                 }
 
             }
@@ -158,9 +158,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s)
             {
-                if(!userEntry.isNumberValid(inputMobile).trim().equals(""))
+                if(!userEntryEvaluation.isNumberValid(inputMobile).trim().equals(""))
                 {
-                    userEntry.evaluate();
+                    userEntryEvaluation.evaluate();
                 }
             }
         });
@@ -181,9 +181,9 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void afterTextChanged(Editable s)
             {
-                if(!userEntry.isEmailValid(inputEmail).trim().equals(""))
+                if(!userEntryEvaluation.isEmailValid(inputEmail).trim().equals(""))
                 {
-                    userEntry.evaluate();
+                    userEntryEvaluation.evaluate();
                 }
             }
         });
@@ -216,7 +216,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                         return;
                     }
 
-                    userEntry.setImageFile(image);
+                    userEntryEvaluation.setImageFile(image);
 
                     Glide.with(getActivity())
                             .load(image)

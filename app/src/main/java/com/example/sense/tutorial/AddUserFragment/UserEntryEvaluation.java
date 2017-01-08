@@ -1,4 +1,4 @@
-package com.example.sense.tutorial.Utilities;
+package com.example.sense.tutorial.AddUserFragment;
 
 import android.content.Context;
 import android.support.design.widget.TextInputEditText;
@@ -6,7 +6,7 @@ import android.widget.Button;
 import com.example.sense.tutorial.R;
 import java.io.File;
 
-public class UserEntry
+public class UserEntryEvaluation
 {
     private final EntryValues entryValues;
     private Context context;
@@ -15,7 +15,7 @@ public class UserEntry
     private final TextInputEditText editEmail;
     private final Button userButton;
 
-    public UserEntry(Context context, TextInputEditText editName, TextInputEditText editNumber, TextInputEditText editEmail, Button userButton)
+    public UserEntryEvaluation(Context context, TextInputEditText editName, TextInputEditText editNumber, TextInputEditText editEmail, Button userButton)
     {
         this.context = context;
         this.editName = editName;

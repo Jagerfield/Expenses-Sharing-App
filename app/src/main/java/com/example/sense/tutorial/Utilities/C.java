@@ -24,6 +24,7 @@ public class C {
     public final static String[] PERMISSIONS_ARRAY = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
             Manifest.permission.READ_EXTERNAL_STORAGE,
+            Manifest.permission.READ_CONTACTS,
             Manifest.permission.CAMERA
     };
 

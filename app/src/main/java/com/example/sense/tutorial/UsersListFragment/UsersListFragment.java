@@ -1,6 +1,8 @@
 package com.example.sense.tutorial.UsersListFragment;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
@@ -13,17 +15,22 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.example.sense.tutorial.MembersListActivity.MembersListActivity;
 import com.example.sense.tutorial.R;
-import com.example.sense.tutorial.RetrofitApi.API.Models.User;
-import com.example.sense.tutorial.RetrofitManager.RetrofitManager;
-import com.example.sense.tutorial.UserDetailFragment.AddUserFragment;
+import com.example.sense.tutorial.Retrofit.User;
+import com.example.sense.tutorial.Retrofit.RetrofitManager;
+import com.example.sense.tutorial.AddUserFragment.AddUserFragment;
 import com.example.sense.tutorial.Utilities.C;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+
 import java.util.ArrayList;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
 public class UsersListFragment extends Fragment {
     private RecyclerView recyclerView;
     private FloatingActionButton fabAddUser;
+    private FloatingActionButton fabShowMembers;
 
     public UsersListFragment() {
     }
@@ -39,6 +46,7 @@ public class UsersListFragment extends Fragment {
         Context context = view.getContext();
 
         fabAddUser = (FloatingActionButton) view.findViewById(R.id.fabAddUser);
+        fabShowMembers = (FloatingActionButton) view.findViewById(R.id.fabMembersList);
 
         /**
          * Add User
@@ -48,6 +56,21 @@ public class UsersListFragment extends Fragment {
             public void onClick(View v) {
 
                 C.launchFragment(((AppCompatActivity) getActivity()), new AddUserFragment());
+            }
+        });
+
+        final Activity activity = getActivity();
+
+        fabShowMembers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                if (activity != null)
+                {
+                    Intent i = new Intent(activity, MembersListActivity.class);
+                    activity.startActivity(i);
+                }
+
             }
         });
 

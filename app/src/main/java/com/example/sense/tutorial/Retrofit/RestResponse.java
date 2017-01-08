@@ -1,4 +1,4 @@
-package com.example.sense.tutorial.RetrofitApi.API.Models;
+package com.example.sense.tutorial.Retrofit;
 
 import java.util.ArrayList;
 

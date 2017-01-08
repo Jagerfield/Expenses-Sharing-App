@@ -1,4 +1,4 @@
-package com.example.sense.tutorial.AddGroupMembers;
+package com.example.sense.tutorial.MembersListActivity;
 
 import android.app.Activity;
 import android.support.v7.app.AppCompatActivity;
@@ -13,10 +13,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.sense.tutorial.R;
-import com.example.sense.tutorial.RetrofitApi.API.Models.User;
-import com.example.sense.tutorial.RetrofitManager.RetrofitManager;
+import com.example.sense.tutorial.Retrofit.User;
+import com.example.sense.tutorial.Retrofit.RetrofitManager;
 import com.example.sense.tutorial.Utilities.C;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.LinkedList;
 import jagerfield.mobilecontactslibrary.Contact.Contact;
 import jagerfield.mobilecontactslibrary.ElementContainers.EmailContainer;
@@ -24,7 +25,7 @@ import jagerfield.mobilecontactslibrary.ImportContacts;
 import jagerfield.utilities.lib.AppUtilities;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
 
-public class AppUserListActivity extends AppCompatActivity
+public class MembersListActivity extends AppCompatActivity
 {
     private RecyclerView recyclerView;
     private Activity activity;
@@ -34,7 +35,7 @@ public class AppUserListActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_members_list);
 
-        recyclerView = (RecyclerView) findViewById(R.id.rv_usertList);
+        recyclerView = (RecyclerView) findViewById(R.id.rv_membersList);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         activity = this;
@@ -79,29 +80,40 @@ public class AppUserListActivity extends AppCompatActivity
 
         ArrayList<User> membersList = new ArrayList<>();
 
-        //Create the memberlist by finding which users in the app user list exist in the contact list
-        for (int i = 0; i < contactsList.size(); i++)
+        Iterator itrOuter = contactsList.listIterator();
+        Iterator itrInner = usersList.listIterator();
+
+        while (itrOuter.hasNext())
         {
-            //Compare according to the gamil email, because the
-            String gmail = "";
-            LinkedList<EmailContainer> emailContainer = contactsList.get(i).getEmails();
+            String contactGmail = "";
+            Contact contact = (Contact) itrOuter.next();
+            LinkedList<EmailContainer> emailContainer = contact.getEmails();
             for (int j = 0; j < emailContainer.size(); j++)
             {
                 String email = emailContainer.get(j).getEmail();
                 if (email.contains("@gmail.com"))
                 {
-                    gmail = email.trim();
+                    contactGmail = email.trim();
                     break;
                 }
             }
 
-            if (gmail.trim().isEmpty()){return;}
+            itrInner = usersList.listIterator();
 
-            for (int k = 0; k < usersList.size(); k++)
+            if (!contactGmail.trim().isEmpty())
             {
-                if (usersList.get(k).getEmail().trim().equals(gmail))
+                while (itrInner.hasNext())
                 {
-                    membersList.add(usersList.get(k));
+                    User user = (User) itrInner.next();
+                    String userGmail = user.getEmail().trim();
+                    if (userGmail.equals(contactGmail))
+                    {
+                        membersList.add(user);
+                        itrOuter.remove();
+                        itrInner.remove();
+                        break;
+                    }
+
                 }
             }
         }

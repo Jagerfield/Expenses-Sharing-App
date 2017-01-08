@@ -25,4 +25,18 @@
         app:fabSize="auto"
         />
 
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fabMembersList"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="34dp"
+        android:layout_marginRight="120dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:backgroundTint="@android:color/holo_blue_light"
+        android:src="@drawable/ic_add_white_24dp"
+        app:fabSize="auto"
+        />
+
 </RelativeLayout>

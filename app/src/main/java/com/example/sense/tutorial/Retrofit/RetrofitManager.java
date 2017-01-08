@@ -1,13 +1,11 @@
-package com.example.sense.tutorial.RetrofitManager;
+package com.example.sense.tutorial.Retrofit;
 
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.view.Window;
-import com.example.sense.tutorial.RetrofitApi.API.Models.RestResponse;
-import com.example.sense.tutorial.RetrofitApi.API.Models.User;
-import com.example.sense.tutorial.RetrofitApi.IRetrofit;
+
 import com.example.sense.tutorial.Utilities.C;
-import com.example.sense.tutorial.Utilities.UserEntry;
+import com.example.sense.tutorial.AddUserFragment.UserEntryEvaluation;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
 import com.squareup.okhttp.RequestBody;
@@ -65,12 +63,12 @@ public class RetrofitManager
         });
     }
 
-    private Map<String, RequestBody> getUSerValues(UserEntry.EntryValues entryValues)
+    private Map<String, RequestBody> getUSerValues(UserEntryEvaluation.EntryValues entryValues)
     {
 
         Map<String, RequestBody> map = new HashMap<>();
 
-        if (entryValues instanceof UserEntry.EntryValues)
+        if (entryValues instanceof UserEntryEvaluation.EntryValues)
         {
             /**
              * Load name, email, mobile
@@ -92,7 +90,7 @@ public class RetrofitManager
         return map;
     }
 
-    public void addUserToDatabase(UserEntry.EntryValues entryValues, final IRetrofitCallback clientCallback)
+    public void addUserToDatabase(UserEntryEvaluation.EntryValues entryValues, final IRetrofitCallback clientCallback)
     {
         final ProgressDialog pd = getProgressDialog();
         Map<String, RequestBody> map = getUSerValues(entryValues);

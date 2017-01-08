@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_vertical_margin"
     android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.sense.tutorial.AddGroupMembers.AppUserListActivity">
+    tools:context="com.example.sense.tutorial.MembersListActivity.MembersListActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_membersList"
