@@ -1,4 +1,4 @@
-#Android-Retrofit-REST-Demo (work in progress)
+#Expenses Sharing App (work in progress)
 
 ##Project Goal
 The app will enable users to create events and share their expenses. It will provide participants with notifications of any changes, and enables them to communicate on the events level. 
