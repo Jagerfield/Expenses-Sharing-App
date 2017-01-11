@@ -2,8 +2,12 @@ package com.example.sense.tutorial.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.io.IOException;
 
 @DatabaseTable(tableName = "Event")
 public class Event
@@ -65,6 +69,48 @@ public class Event
     @JsonIgnore
     public void setDbId(long dbId) {
         this.dbId = dbId;
+    }
+
+
+    @JsonIgnore
+    public Event getAppOwnerObj(String jsonString)
+    {
+        Event event = null;
+        ObjectMapper mapper = new ObjectMapper();
+
+        try
+        {
+            event = mapper.readValue(jsonString, Event.class);
+        }
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return event;
+    }
+
+    @JsonIgnore
+    public String getAppOwnerObjJson(Event event)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString= "";
+
+        try
+        {
+            jsonString = mapper.writeValueAsString(event);
+
+        }
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+
+        return jsonString;
     }
 
     public interface Columns {

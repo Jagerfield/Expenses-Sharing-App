@@ -2,6 +2,10 @@ package com.example.sense.tutorial.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.io.IOException;
 
 public class Member
 {
@@ -79,4 +83,46 @@ public class Member
         this.account_status = account_status;
     }
 
+    @JsonIgnore
+    public Member getAppOwnerObj(String jsonString)
+    {
+        Member member = null;
+        ObjectMapper mapper = new ObjectMapper();
+
+        try
+        {
+            member = mapper.readValue(jsonString, Member.class);
+        }
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return member;
+    }
+
+    @JsonIgnore
+    public String getAppOwnerObjJson(Member member)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString= "";
+
+        try
+        {
+            jsonString = mapper.writeValueAsString(member);
+
+        }
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+
+        return jsonString;
+    }
+
 }
+

@@ -2,8 +2,12 @@ package com.example.sense.tutorial.Models;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
+
+import java.io.IOException;
 
 @DatabaseTable(tableName = "Group")
 public class Group
@@ -67,6 +71,46 @@ public class Group
         this.dbId = dbId;
     }
 
+
+    @JsonIgnore
+    public Group getAppOwnerObj(String jsonString)
+    {
+        Group group = null;
+        ObjectMapper mapper = new ObjectMapper();
+
+        try
+        {
+            group = mapper.readValue(jsonString, Group.class);
+        }
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+
+        return group;
+    }
+
+    @JsonIgnore
+    public String getAppOwnerObjJson(Group group)
+    {
+        ObjectMapper mapper = new ObjectMapper();
+        String jsonString= "";
+
+        try
+        {
+            jsonString = mapper.writeValueAsString(group);
+        }
+        catch (JsonProcessingException e)
+        {
+            e.printStackTrace();
+        }
+
+        return jsonString;
+    }
 
     public interface Columns {
         String MEMBERID = "member_id";
