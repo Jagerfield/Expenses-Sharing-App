@@ -1,7 +1,7 @@
 #Android-Retrofit-REST-Demo (work in progress)
 
 ##Project Goal
-The app will enable users to create events and share their expensis. It will provide participants with notifications of any changes, and enables them to communicate on the events level. 
+The app will enable users to create events and share their expenses. It will provide participants with notifications of any changes, and enables them to communicate on the events level. 
 
 ##Project current status
 ```
@@ -29,10 +29,10 @@ The app will enable users to create events and share their expensis. It will pro
 
 ##The following will be implemented:
 ```
-1. Verify their gmail using Facebook Account Kit.
-2. Use Google Cloud Messaging (GCM) for push nitifications.
+1. Verify their Gmail using Facebook Account Kit.
+2. Use Google Cloud Messaging (GCM) for push notifications.
 3. Develop the backend, that includes database tables and RESTful Web Service in PHP. 
-4. Develop core logic for the app and GUI using material design guidlines.
+4. Develop core logic for the app and GUI using material design guidelines.
 ```
 
 
