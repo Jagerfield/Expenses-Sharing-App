@@ -5,7 +5,9 @@ The app will enable users to create events and share their expenses. It will pro
 
 ##Project current status
 ```
-1. I created an app to access users data on a WampServer. The server's db contains a demo table "users". I wrote the server-side APIs in php. The app uses the Retrofit REST client to do GET, POST (and eventually PUT, DELETE) actions on the table, and post user-entries with pictures (optional). 
+1. I created an app to access users data on a WampServer. The server's db contains a demo table "users". 
+ a. Wrote the server-side APIs in php. The app uses the Retrofit REST client to do GET, POST (and eventually PUT, DELETE) 
+ b. The app can currenty post user-entries with pictures (optional). 
 2. Completed the conceptual design for the server's db, and created tables.
 3. Created relevant data models in the app.
 3. Implemented  OrmLite for providing a db in the app. The purpose to store events information so they can be viewed offline.
