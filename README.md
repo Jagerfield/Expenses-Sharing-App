@@ -12,8 +12,8 @@ The app will enable users to create events and share their expenses. It will pro
 3. Created relevant data models in the app.
 3. Implemented  OrmLite for providing a db in the app. The purpose to store events information so they can be viewed offline.
 4. Implemented Jackson for json parsing. 
-5. Implemented permissions checking using [Android-Utilities-Library](https://github.com/Jagerfield/Android-Utilities-Library).
-6. Implemented fetching mobile contacts using [Mobile-Contacts-Library](https://github.com/Jagerfield/Mobile-Contacts-Library).
+5. Implemented permissions checking using Android-Utilities-Library.
+6. Implemented fetching mobile contacts using Mobile-Contacts-Library.
 ```
 
 ##App Functionality Description
