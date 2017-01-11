@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onPermissionsGranted(IGetPermissionResult result) {
 
                     /**
-                     * User accepted all requested permissions
+                     * Member accepted all requested permissions
                      */
 
                     C.launchFragment(activity, new UsersListFragment());
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 public void onPermissionsMissing(IGetPermissionResult result)
                 {
                     //Write your code here
-                    Toast.makeText(MainActivity.this, "User didn't accept all permissions", Toast.LENGTH_LONG).show();
+                    Toast.makeText(MainActivity.this, "Member didn't accept all permissions", Toast.LENGTH_LONG).show();
                 }
             });
         }

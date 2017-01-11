@@ -45,4 +45,6 @@ dependencies {
     compile 'com.github.jkwiecien:EasyImage:1.4.1'
     compile 'com.github.Jagerfield:android-Utilities-Library:v2.1'
     compile 'com.github.Jagerfield:Mobile-Contacts-Library:v1.6'
+    compile files('libs/ormlite-android-5.0.jar')
+    compile files('libs/ormlite-core-5.0.jar')
 }

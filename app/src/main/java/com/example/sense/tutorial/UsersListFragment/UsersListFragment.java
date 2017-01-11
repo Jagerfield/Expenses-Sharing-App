@@ -49,7 +49,7 @@ public class UsersListFragment extends Fragment {
         fabShowMembers = (FloatingActionButton) view.findViewById(R.id.fabMembersList);
 
         /**
-         * Add User
+         * Add Member
          */
         fabAddUser.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -79,7 +79,7 @@ public class UsersListFragment extends Fragment {
 
 
         /**
-         * Get User's list from DB using RetrofitManager
+         * Get Member's list from DB using RetrofitManager
          * RetrofitManager will send back the results with a callback
          */
 
@@ -107,7 +107,7 @@ public class UsersListFragment extends Fragment {
 
 
     /**
-     * Fragment User List Adapter
+     * Fragment Member List Adapter
      *
      *
      */

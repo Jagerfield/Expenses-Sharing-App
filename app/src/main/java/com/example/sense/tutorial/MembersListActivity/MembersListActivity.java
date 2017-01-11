@@ -113,7 +113,6 @@ public class MembersListActivity extends AppCompatActivity
                         itrInner.remove();
                         break;
                     }
-
                 }
             }
         }
