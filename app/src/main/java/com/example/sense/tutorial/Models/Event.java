@@ -71,7 +71,6 @@ public class Event
         this.dbId = dbId;
     }
 
-
     @JsonIgnore
     public Event getAppOwnerObj(String jsonString)
     {

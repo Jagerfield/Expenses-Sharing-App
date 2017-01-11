@@ -58,6 +58,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     @Override
+    protected void onPause()
+    {
+        super.onPause();
+    }
+
+    @Override
     public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults)
     {
         PermissionsUtil permissionsUtil = AppUtilities.getPermissionUtil(this);
