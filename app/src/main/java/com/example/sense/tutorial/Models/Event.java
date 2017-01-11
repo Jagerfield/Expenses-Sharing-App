@@ -1,50 +1,77 @@
 package com.example.sense.tutorial.Models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
 @DatabaseTable(tableName = "Event")
 public class Event
 {
-    @DatabaseField(id = true)
+    @JsonProperty("dbId")
+    @DatabaseField(id = true, columnName = Columns.DBID)
     private long dbId;
-    @DatabaseField
+
+    @JsonProperty("id")
+    @DatabaseField(columnName = Columns.ID)
     private long id;
-    @DatabaseField
+
+    @JsonProperty("admin")
+    @DatabaseField(columnName = Columns.ADMIN)
     private long admin;
-    @DatabaseField
+
+    @JsonProperty("name")
+    @DatabaseField(columnName = Columns.NAME)
     private String name;
 
-    public long getId() {
-        return id;
-    }
+    public Event(){}
 
-    public void setId(long id) {
+    @JsonIgnore
+    public Event(long dbId, long id, long admin, String name) {
+        this.dbId = dbId;
         this.id = id;
-    }
-
-    public long getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(long admin) {
         this.admin = admin;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
         this.name = name;
     }
 
+    @JsonIgnore
+    public long getId() {
+        return id;
+    }
+    @JsonIgnore
+    public void setId(long id) {
+        this.id = id;
+    }
+    @JsonIgnore
+    public long getAdmin() {
+        return admin;
+    }
+    @JsonIgnore
+    public void setAdmin(long admin) {
+        this.admin = admin;
+    }
+    @JsonIgnore
+    public String getName() {
+        return name;
+    }
+    @JsonIgnore
+    public void setName(String name) {
+        this.name = name;
+    }
+    @JsonIgnore
     public long getDbId() {
         return dbId;
     }
-
+    @JsonIgnore
     public void setDbId(long dbId) {
         this.dbId = dbId;
+    }
+
+    public interface Columns {
+        String NAME = "name";
+        String ADMIN = "admin";
+        String ID = "id";
+        String DBID = "dbId";
     }
 }
 

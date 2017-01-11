@@ -14,12 +14,14 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import com.example.sense.tutorial.R;
 
-public class C {
+public class C
+{
     public static final int NETWORK_SUCCESS_CODE = 200;
     public static final String BASE_URL = "http://10.0.0.11/retrofit_tutorial/";
     public static final String USERS_API = "users.php";
     public static final int CHOOSE_PHOTO_CODE = 100;
     public static final String TAG_LIB = "TAG_LIB";
+    public static final String APP_PREFERENCES = "APP_PREFERENCES";
 
     public final static String[] PERMISSIONS_ARRAY = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -27,6 +29,7 @@ public class C {
             Manifest.permission.READ_CONTACTS,
             Manifest.permission.CAMERA
     };
+
 
     public static void launchFragment(AppCompatActivity context, Fragment fragment)
     {
