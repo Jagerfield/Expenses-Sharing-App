@@ -35,7 +35,7 @@ public class Transaction
 
     @JsonProperty(Columns.IMAGE)
     @DatabaseField(columnName = Columns.IMAGE)
-    private long image;
+    private String image;
 
     @JsonProperty(Columns.CREATEDAT)
     @DatabaseField(columnName = Columns.CREATEDAT)
@@ -49,7 +49,7 @@ public class Transaction
     }
 
     @JsonIgnore
-    public Transaction(long ormId, long id, long issuer, long receiver, long amount, long description, long image, long created_at, long updated_at) {
+    public Transaction(long ormId, long id, long issuer, long receiver, long amount, long description, String image, long created_at, long updated_at) {
         this.ormId = ormId;
         this.id = id;
         this.issuer = issuer;

@@ -29,13 +29,13 @@ public class Chat
 
     @JsonProperty(Columns.MESSAGE)
     @DatabaseField(columnName = Columns.MESSAGE)
-    private long message;
+    private String message;
 
     public Chat() {
     }
 
     @JsonIgnore
-    public Chat(long ormId, long id, long issuer, long event_id, long message) {
+    public Chat(long ormId, long id, long issuer, long event_id, String message) {
         this.ormId = ormId;
         this.id = id;
         this.issuer = issuer;
@@ -44,7 +44,7 @@ public class Chat
     }
 
     @JsonIgnore
-    public Chat getAppOwnerObj(String jsonString)
+    public Chat getObj(String jsonString)
     {
         Chat chat = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -66,7 +66,7 @@ public class Chat
     }
 
     @JsonIgnore
-    public String getAppOwnerObjJson(Chat chat)
+    public String getJsonString(Chat chat)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";
