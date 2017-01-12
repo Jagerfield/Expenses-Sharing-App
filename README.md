@@ -23,7 +23,7 @@ with notifications of any changes, and enables them to communicate on the events
 9. Each user can add/delete/edit their own transactions or leave the the event. 
    status of each request will be registered and visible on both the owner's and the member's events.  
 10. All Actions made on the event and its transactions should be logged in text in the event and 
-   participants notified.
+    participants notified.
 11. Text messages between the participants in an event is also possible to add to the event. 
 ```
 
