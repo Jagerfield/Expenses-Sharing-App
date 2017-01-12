@@ -34,16 +34,21 @@ public class Member
     @DatabaseField(columnName = Columns.ACCOUNTSTATUS)
     private boolean account_status;
 
+    @JsonProperty(Event.Columns.IMAGE)
+    @DatabaseField(columnName = Event.Columns.IMAGE)
+    private String image;
+
     public Member() { }
 
     @JsonIgnore
-    public Member(long ormId, long id, String name, String gmail, String udId, boolean account_status) {
+    public Member(long ormId, long id, String name, String gmail, String udId, boolean account_status, String image) {
         this.ormId = ormId;
         this.id = id;
         this.name = name;
         this.gmail = gmail;
         this.udId = udId;
         this.account_status = account_status;
+        this.image = image;
     }
 
     @JsonIgnore
@@ -94,6 +99,14 @@ public class Member
     public void setAccount_status(boolean account_status) {
         this.account_status = account_status;
     }
+    @JsonIgnore
+    public String getImage() {
+        return image;
+    }
+    @JsonIgnore
+    public void setImage(String image) {
+        this.image = image;
+    }
 
     @JsonIgnore
     public Member getObj(String jsonString)
@@ -137,12 +150,13 @@ public class Member
     }
 
     public interface Columns {
-        String NAME = "name";
-        String GMAIL = "gmail";
         String ID = "id";
         String ORMID = "ormId";
+        String NAME = "name";
+        String GMAIL = "gmail";
         String UDID = "udId";
         String ACCOUNTSTATUS = "account_status";
+        String IMAGE = "image";
     }
 
 }

@@ -156,10 +156,10 @@ public class Event
     }
 
     public interface Columns {
-        String NAME = "name";
-        String ISSUER = "issuer";
         String ID = "id";
         String ORMID = "ormId";
+        String NAME = "name";
+        String ISSUER = "issuer";
         String DESCRIPTION = "description";
         String CREATEDAT = "created_at";
         String IMAGE = "image";

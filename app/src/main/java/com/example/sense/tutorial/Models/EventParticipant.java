@@ -27,14 +27,19 @@ public class EventParticipant
     @DatabaseField(columnName = Columns.MEMBERID)
     private long member_id;
 
+    @JsonProperty(Columns.STATUS)
+    @DatabaseField(columnName = Columns.STATUS)
+    private long status;
+
     public EventParticipant() { }
 
     @JsonIgnore
-    public EventParticipant(long ormId, long id, long event_id, long member_id) {
+    public EventParticipant(long ormId, long id, long event_id, long member_id, long status) {
         this.ormId = ormId;
         this.id = id;
         this.event_id = event_id;
         this.member_id = member_id;
+        this.status = status;
     }
 
     @JsonIgnore
@@ -69,7 +74,14 @@ public class EventParticipant
     public void setOrmId(long ormId) {
         this.ormId = ormId;
     }
-
+    @JsonIgnore
+    public long getStatus() {
+        return status;
+    }
+    @JsonIgnore
+    public void setStatus(long status) {
+        this.status = status;
+    }
 
     @JsonIgnore
     public EventParticipant getObj(String jsonString)
@@ -112,9 +124,12 @@ public class EventParticipant
     }
 
     public interface Columns {
-        String MEMBERID = "member_id";
-        String EVENTID = "event_id";
         String ID = "id";
         String ORMID = "ormId";
+        String EVENTID = "event_id";
+        String MEMBERID = "member_id";
+        String STATUS = "status";
+
+
     }
 }
