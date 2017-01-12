@@ -10,9 +10,9 @@ with notifications of any changes, and enables them to communicate on the events
 2. App users will register in the app using Gmail only. This will ensure that each user is unique. 
    Phone numbers and other emails won't be used as users can have more than one.
 3. A user can create an event to share expenses. 
-  a. An event will state the issuer as the owner and will contain event name, description, and a 
+   a. An event will state the issuer as the owner and will contain event name, description, and a 
      list of participant members. 
-  b. Events should have a date stamp and be searchable by date, name or members.
+   b. Events should have a date stamp and be searchable by date, name or members.
 4. To add participants, the user will be able to select from a list containing his mobile contacts 
    who should also be registered members in the app. 
 5. After selecting members for the event, the user will then be able to set transactions with the amount 
