@@ -20,11 +20,11 @@ with notifications of any changes, and enables them to communicate on the events
 6. The owner of the event is the only one able to delete the event. 
 7. The event will log changes made on each request. 
 8. Once the event is created, the other members will be notified and the event will show up in their apps. 
-7. Each user can add/delete/edit their own transactions or leave the the event. 
+9. Each user can add/delete/edit their own transactions or leave the the event. 
    status of each request will be registered and visible on both the owner's and the member's events.  
-8. All Actions made on the event and its transactions should be logged in text in the event and 
+10. All Actions made on the event and its transactions should be logged in text in the event and 
    participants notified.
-9. Text messages between the participants in an event is also possible to add to the event. 
+11. Text messages between the participants in an event is also possible to add to the event. 
 ```
 
 ##The following will be implemented:
@@ -37,17 +37,15 @@ with notifications of any changes, and enables them to communicate on the events
 
 ##Project current status
 ```
-1. Created an app to access users data on a WampServer. The server's db contains a demo table "users". 
- a. Wrote the server-side APIs in php. The app uses the Retrofit REST client to do GET, POST 
-    (and eventually PUT, DELETE) 
- b. The app can currently post user-entries with pictures. 
+1. Created an app to access data on a WampServer. Wrote the server-side APIs in php for test purposes. 
+   The app uses the Retrofit REST client and can currently post user-entries with pictures. 
 2. Completed the conceptual design for the server's db, and created tables.
 3. Created relevant data models in the app.
-3. Implemented  OrmLite for providing a db in the app. The purpose to store events information so they 
+4. Implemented  OrmLite for providing a db in the app. The purpose to store events information so they 
    can be viewed offline.
-4. Implemented Jackson for json parsing. 
-5. Implemented permissions checking.
-6. Implemented fetching mobile contacts.
+5. Implemented Jackson for json parsing. 
+6. Implemented permissions checking.
+7. Implemented fetching mobile contacts.
 ```
 ## DB table design 
 
