@@ -51,7 +51,7 @@ can be viewed offline.
 ```
 ## DB table design 
 
-<img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/db_design.PNG" width="500"/> &#160;
+<img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/db%20design.PNG" width="500"/> &#160;
 
 
 
