@@ -30,7 +30,7 @@ can be viewed offline.
   b. Events should have a date stamp and be searchable by date, name or members.
 4. To add participants, the user will be able to select from a list containing his mobile contacts 
    who should also be registered members in the app. 
-5. After selecting members for the event, the user will then be able to set requests with the amount 
+5. After selecting members for the event, the user will then be able to set transactions with the amount 
    of money each member has lent or borrowed. 
 6. The owner of the event is the only one able to delete the event. 
 7. The event will log changes made on each request. 
