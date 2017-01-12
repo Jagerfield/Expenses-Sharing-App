@@ -12,27 +12,35 @@ import java.io.IOException;
 @DatabaseTable(tableName = "Event")
 public class Event
 {
-    @JsonProperty("dbId")
-    @DatabaseField(id = true, columnName = Columns.DBID)
-    private long dbId;
+    @JsonProperty(Columns.ORMID)
+    @DatabaseField(id = true, columnName = Columns.ORMID)
+    private long ormId;
 
-    @JsonProperty("id")
+    @JsonProperty(Columns.ID)
     @DatabaseField(columnName = Columns.ID)
     private long id;
 
-    @JsonProperty("admin")
+    @JsonProperty(Columns.ADMIN)
     @DatabaseField(columnName = Columns.ADMIN)
     private long admin;
 
-    @JsonProperty("name")
+    @JsonProperty(Columns.NAME)
     @DatabaseField(columnName = Columns.NAME)
     private String name;
+
+    @JsonProperty(Columns.DESCRIPTION)
+    @DatabaseField(columnName = Columns.DESCRIPTION)
+    private String description;
+
+    @JsonProperty(Columns.CREATEDAT)
+    @DatabaseField(columnName = Columns.CREATEDAT)
+    private String created_at;
 
     public Event(){}
 
     @JsonIgnore
-    public Event(long dbId, long id, long admin, String name) {
-        this.dbId = dbId;
+    public Event(long ormId, long id, long admin, String name) {
+        this.ormId = ormId;
         this.id = id;
         this.admin = admin;
         this.name = name;
@@ -63,12 +71,28 @@ public class Event
         this.name = name;
     }
     @JsonIgnore
-    public long getDbId() {
-        return dbId;
+    public long getOrmId() {
+        return ormId;
     }
     @JsonIgnore
-    public void setDbId(long dbId) {
-        this.dbId = dbId;
+    public void setOrmId(long ormId) {
+        this.ormId = ormId;
+    }
+    @JsonIgnore
+    public String getDescription() {
+        return description;
+    }
+    @JsonIgnore
+    public void setDescription(String description) {
+        this.description = description;
+    }
+    @JsonIgnore
+    public String getCreated_at() {
+        return created_at;
+    }
+    @JsonIgnore
+    public void setCreated_at(String created_at) {
+        this.created_at = created_at;
     }
 
     @JsonIgnore
@@ -116,7 +140,9 @@ public class Event
         String NAME = "name";
         String ADMIN = "admin";
         String ID = "id";
-        String DBID = "dbId";
+        String ORMID = "ormId";
+        String DESCRIPTION = "description";
+        String CREATEDAT = "created_at";
     }
 }
 

@@ -9,30 +9,30 @@ import com.j256.ormlite.table.DatabaseTable;
 
 import java.io.IOException;
 
-@DatabaseTable(tableName = "Group")
-public class Group
+@DatabaseTable(tableName = "EventParticipant")
+public class EventParticipant
 {
-    @JsonProperty("dbId")
-    @DatabaseField(id = true, columnName = Columns.DBID)
-    private long dbId;
+    @JsonProperty(Columns.ORMID)
+    @DatabaseField(id = true, columnName = Columns.ORMID)
+    private long ormId;
 
-    @JsonProperty("id")
+    @JsonProperty(Columns.ID)
     @DatabaseField(columnName = Columns.ID)
     private long id;
 
-    @JsonProperty("event_id")
+    @JsonProperty(Columns.EVENTID)
     @DatabaseField(columnName = Columns.EVENTID)
     private long event_id;
 
-    @JsonProperty("member_id")
+    @JsonProperty(Columns.MEMBERID)
     @DatabaseField(columnName = Columns.MEMBERID)
     private long member_id;
 
-    public Group() { }
+    public EventParticipant() { }
 
     @JsonIgnore
-    public Group(long dbId, long id, long event_id, long member_id) {
-        this.dbId = dbId;
+    public EventParticipant(long ormId, long id, long event_id, long member_id) {
+        this.ormId = ormId;
         this.id = id;
         this.event_id = event_id;
         this.member_id = member_id;
@@ -63,24 +63,24 @@ public class Group
         this.event_id = event_id;
     }
     @JsonIgnore
-    public long getDbId() {
-        return dbId;
+    public long getOrmId() {
+        return ormId;
     }
     @JsonIgnore
-    public void setDbId(long dbId) {
-        this.dbId = dbId;
+    public void setOrmId(long ormId) {
+        this.ormId = ormId;
     }
 
 
     @JsonIgnore
-    public Group getAppOwnerObj(String jsonString)
+    public EventParticipant getAppOwnerObj(String jsonString)
     {
-        Group group = null;
+        EventParticipant eventParticipant = null;
         ObjectMapper mapper = new ObjectMapper();
 
         try
         {
-            group = mapper.readValue(jsonString, Group.class);
+            eventParticipant = mapper.readValue(jsonString, EventParticipant.class);
         }
         catch (JsonProcessingException e)
         {
@@ -91,18 +91,18 @@ public class Group
             e.printStackTrace();
         }
 
-        return group;
+        return eventParticipant;
     }
 
     @JsonIgnore
-    public String getAppOwnerObjJson(Group group)
+    public String getAppOwnerObjJson(EventParticipant eventParticipant)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";
 
         try
         {
-            jsonString = mapper.writeValueAsString(group);
+            jsonString = mapper.writeValueAsString(eventParticipant);
         }
         catch (JsonProcessingException e)
         {
@@ -116,6 +116,6 @@ public class Group
         String MEMBERID = "member_id";
         String EVENTID = "event_id";
         String ID = "id";
-        String DBID = "dbId";
+        String ORMID = "ormId";
     }
 }

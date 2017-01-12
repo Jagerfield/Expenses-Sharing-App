@@ -4,43 +4,55 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.j256.ormlite.field.DatabaseField;
 
 import java.io.IOException;
 
 public class Member
 {
-    @JsonProperty("dbId")
-    private long dbId;
-    @JsonProperty("id")
+    @JsonProperty(Columns.ORMID)
+    @DatabaseField(id = true, columnName = Columns.ORMID)
+    private long ormId;
+
+    @JsonProperty(Columns.ID)
+    @DatabaseField(columnName = Columns.ID)
     private long id;
-    @JsonProperty("name")
+
+    @JsonProperty(Columns.NAME)
+    @DatabaseField(columnName = Columns.NAME)
     private String name;
-    @JsonProperty("gmail")
+
+    @JsonProperty(Columns.GMAIL)
+    @DatabaseField(columnName = Columns.GMAIL)
     private String gmail;
-    @JsonProperty("udid")
-    private String udid;
-    @JsonProperty("account_status")
+
+    @JsonProperty(Columns.UDID)
+    @DatabaseField(columnName = Columns.UDID)
+    private String udId;
+
+    @JsonProperty(Columns.ACCOUNTSTATUS)
+    @DatabaseField(columnName = Columns.ACCOUNTSTATUS)
     private boolean account_status;
 
     public Member() { }
 
     @JsonIgnore
-    public Member(long dbId, long id, String name, String gmail, String udid, boolean account_status) {
-        this.dbId = dbId;
+    public Member(long ormId, long id, String name, String gmail, String udId, boolean account_status) {
+        this.ormId = ormId;
         this.id = id;
         this.name = name;
         this.gmail = gmail;
-        this.udid = udid;
+        this.udId = udId;
         this.account_status = account_status;
     }
 
     @JsonIgnore
-    public long getDbId() {
-        return dbId;
+    public long getOrmId() {
+        return ormId;
     }
     @JsonIgnore
-    public void setDbId(long dbId) {
-        this.dbId = dbId;
+    public void setOrmId(long ormId) {
+        this.ormId = ormId;
     }
     @JsonIgnore
     public long getId() {
@@ -67,12 +79,12 @@ public class Member
         this.gmail = gmail;
     }
     @JsonIgnore
-    public String getUdid() {
-        return udid;
+    public String getUdId() {
+        return udId;
     }
     @JsonIgnore
-    public void setUdid(String udid) {
-        this.udid = udid;
+    public void setUdId(String udId) {
+        this.udId = udId;
     }
     @JsonIgnore
     public boolean isAccount_status() {
@@ -122,6 +134,15 @@ public class Member
         }
 
         return jsonString;
+    }
+
+    public interface Columns {
+        String NAME = "name";
+        String GMAIL = "gmail";
+        String ID = "id";
+        String ORMID = "ormId";
+        String UDID = "udId";
+        String ACCOUNTSTATUS = "account_status";
     }
 
 }
