@@ -19,7 +19,7 @@ can be viewed offline.
 6. Implemented fetching mobile contacts.
 ```
 
-##App Functionality Description
+##App Specifications - Functionality Description (Under development)
 ```
 1. The app is intended for use in Android devices only. 
 2. App users will register in the app using Gmail only. This will ensure that each user is unique. 
