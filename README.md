@@ -37,14 +37,14 @@ with notifications of any changes, and enables them to communicate on the events
 
 ##Project current status
 ```
-1. created an app to access users data on a WampServer. The server's db contains a demo table "users". 
+1. Created an app to access users data on a WampServer. The server's db contains a demo table "users". 
  a. Wrote the server-side APIs in php. The app uses the Retrofit REST client to do GET, POST 
     (and eventually PUT, DELETE) 
- b. The app can currently post user-entries with pictures (optional). 
+ b. The app can currently post user-entries with pictures. 
 2. Completed the conceptual design for the server's db, and created tables.
 3. Created relevant data models in the app.
 3. Implemented  OrmLite for providing a db in the app. The purpose to store events information so they 
-can be viewed offline.
+   can be viewed offline.
 4. Implemented Jackson for json parsing. 
 5. Implemented permissions checking.
 6. Implemented fetching mobile contacts.
