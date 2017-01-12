@@ -96,7 +96,7 @@ public class Member
     }
 
     @JsonIgnore
-    public Member getAppOwnerObj(String jsonString)
+    public Member getObj(String jsonString)
     {
         Member member = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -118,7 +118,7 @@ public class Member
     }
 
     @JsonIgnore
-    public String getAppOwnerObjJson(Member member)
+    public String getJsonString(Member member)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";

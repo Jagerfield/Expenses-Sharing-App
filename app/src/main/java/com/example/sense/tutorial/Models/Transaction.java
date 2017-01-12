@@ -62,7 +62,7 @@ public class Transaction
     }
 
     @JsonIgnore
-    public Transaction getAppOwnerObj(String jsonString)
+    public Transaction getObj(String jsonString)
     {
         Transaction transaction = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -84,7 +84,7 @@ public class Transaction
     }
 
     @JsonIgnore
-    public String getAppOwnerObjJson(Transaction transaction)
+    public String getJsonString(Transaction transaction)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";

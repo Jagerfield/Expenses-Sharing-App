@@ -19,9 +19,9 @@ public class Event
     @DatabaseField(columnName = Columns.ID)
     private long id;
 
-    @JsonProperty(Columns.ADMIN)
-    @DatabaseField(columnName = Columns.ADMIN)
-    private long admin;
+    @JsonProperty(Columns.ISSUER)
+    @DatabaseField(columnName = Columns.ISSUER)
+    private long issuer;
 
     @JsonProperty(Columns.NAME)
     @DatabaseField(columnName = Columns.NAME)
@@ -35,15 +35,24 @@ public class Event
     @DatabaseField(columnName = Columns.CREATEDAT)
     private String created_at;
 
+    @JsonProperty(Columns.IMAGE)
+    @DatabaseField(columnName = Columns.IMAGE)
+    private String image;
+
+
     public Event(){}
 
     @JsonIgnore
-    public Event(long ormId, long id, long admin, String name) {
+    public Event(long ormId, long id, long issuer, String name, String description, String created_at, String image) {
         this.ormId = ormId;
         this.id = id;
-        this.admin = admin;
+        this.issuer = issuer;
         this.name = name;
+        this.description = description;
+        this.created_at = created_at;
+        this.image = image;
     }
+
 
     @JsonIgnore
     public long getId() {
@@ -53,14 +62,17 @@ public class Event
     public void setId(long id) {
         this.id = id;
     }
+
     @JsonIgnore
-    public long getAdmin() {
-        return admin;
+    public long getIssuer() {
+        return issuer;
     }
+
     @JsonIgnore
-    public void setAdmin(long admin) {
-        this.admin = admin;
+    public void setIssuer(long issuer) {
+        this.issuer = issuer;
     }
+
     @JsonIgnore
     public String getName() {
         return name;
@@ -87,15 +99,23 @@ public class Event
     }
     @JsonIgnore
     public String getCreated_at() {
-        return created_at;
+        return image;
     }
     @JsonIgnore
     public void setCreated_at(String created_at) {
-        this.created_at = created_at;
+        this.image = created_at;
+    }
+    @JsonIgnore
+    public String getImage() {
+        return image;
+    }
+    @JsonIgnore
+    public void setImage(String image) {
+        this.image = image;
     }
 
     @JsonIgnore
-    public Event getAppOwnerObj(String jsonString)
+    public Event getObj(String jsonString)
     {
         Event event = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -117,7 +137,7 @@ public class Event
     }
 
     @JsonIgnore
-    public String getAppOwnerObjJson(Event event)
+    public String getJsonString(Event event)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";
@@ -137,11 +157,12 @@ public class Event
 
     public interface Columns {
         String NAME = "name";
-        String ADMIN = "admin";
+        String ISSUER = "issuer";
         String ID = "id";
         String ORMID = "ormId";
         String DESCRIPTION = "description";
         String CREATEDAT = "created_at";
+        String IMAGE = "image";
     }
 }
 

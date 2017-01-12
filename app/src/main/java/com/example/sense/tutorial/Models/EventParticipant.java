@@ -72,7 +72,7 @@ public class EventParticipant
 
 
     @JsonIgnore
-    public EventParticipant getAppOwnerObj(String jsonString)
+    public EventParticipant getObj(String jsonString)
     {
         EventParticipant eventParticipant = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -94,7 +94,7 @@ public class EventParticipant
     }
 
     @JsonIgnore
-    public String getAppOwnerObjJson(EventParticipant eventParticipant)
+    public String getJsonString(EventParticipant eventParticipant)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";
