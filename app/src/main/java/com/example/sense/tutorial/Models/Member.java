@@ -34,8 +34,8 @@ public class Member
     @DatabaseField(columnName = Columns.ACCOUNTSTATUS)
     private boolean account_status;
 
-    @JsonProperty(Event.Columns.IMAGE)
-    @DatabaseField(columnName = Event.Columns.IMAGE)
+    @JsonProperty(Columns.IMAGE)
+    @DatabaseField(columnName = Columns.IMAGE)
     private String image;
 
     public Member() { }
