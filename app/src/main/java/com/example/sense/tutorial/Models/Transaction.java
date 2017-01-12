@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.j256.ormlite.field.DatabaseField;
-
 import java.io.IOException;
 
 public class Transaction
@@ -18,8 +17,8 @@ public class Transaction
     @DatabaseField(columnName = Columns.ID)
     private long id;
 
-    @JsonProperty(Columns.ISSURE)
-    @DatabaseField(columnName = Columns.ISSURE)
+    @JsonProperty(Columns.ISSUER)
+    @DatabaseField(columnName = Columns.ISSUER)
     private long issuer;
 
     @JsonProperty(Columns.RECEIVER)
@@ -46,6 +45,21 @@ public class Transaction
     @DatabaseField(columnName = Columns.UPDATEDAT)
     private long updated_at;
 
+    public Transaction() {
+    }
+
+    @JsonIgnore
+    public Transaction(long ormId, long id, long issuer, long receiver, long amount, long description, long image, long created_at, long updated_at) {
+        this.ormId = ormId;
+        this.id = id;
+        this.issuer = issuer;
+        this.receiver = receiver;
+        this.amount = amount;
+        this.description = description;
+        this.image = image;
+        this.created_at = created_at;
+        this.updated_at = updated_at;
+    }
 
     @JsonIgnore
     public Transaction getAppOwnerObj(String jsonString)
@@ -92,7 +106,7 @@ public class Transaction
     public interface Columns {
         String ID = "id";
         String ORMID = "ormId";
-        String ISSURE = "issuer";
+        String ISSUER = "issuer";
         String RECEIVER = "receiver";
         String AMOUNT = "amount";
         String DESCRIPTION = "description";
