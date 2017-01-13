@@ -47,6 +47,15 @@ with notifications of any changes, and enables them to communicate on the events
 6. Implemented permissions checking.
 7. Implemented fetching mobile contacts.
 ```
+
+##Next
+```
+1. Complete the php apis for the server tables.
+2. Convert server response jason to java pojo classes.
+3. Testing.
+```
+
+
 ## DB table design 
 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/db%20design.PNG" width="600"/> &#160;
