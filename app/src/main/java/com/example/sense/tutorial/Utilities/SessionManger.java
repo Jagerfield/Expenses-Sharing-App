@@ -18,9 +18,9 @@ public class SessionManger
 
     public void setAppOwner(Member member)
     {
-        PrefrenceUtil.setLong(context, ID_KEY, member.getId());
+        PrefrenceUtil.setLong(context, ID_KEY, member.getMember_id());
         PrefrenceUtil.setString(context, GMAIL_KEY, member.getGmail());
-        PrefrenceUtil.setString(context, NAME_KEY, member.getName());
+        PrefrenceUtil.setString(context, NAME_KEY, member.getMember_name());
     }
 
     public Member regtAppOwner(){

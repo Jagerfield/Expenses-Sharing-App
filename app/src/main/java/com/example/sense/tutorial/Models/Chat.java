@@ -15,32 +15,32 @@ public class Chat
     @DatabaseField(id = true, columnName = Columns.ORMID)
     private long ormId;
 
-    @JsonProperty(Columns.ID)
-    @DatabaseField(columnName = Columns.ID)
-    private long id;
+    @JsonProperty(Columns.CHA_TID)
+    @DatabaseField(columnName = Columns.CHA_TID)
+    private long chat_id;
 
-    @JsonProperty(Columns.ISSUER)
-    @DatabaseField(columnName = Columns.ISSUER)
-    private long issuer;
+    @JsonProperty(Columns.CHAT_ISSUER)
+    @DatabaseField(columnName = Columns.CHAT_ISSUER)
+    private long chat_issuer;
 
-    @JsonProperty(Columns.EVENTID)
-    @DatabaseField(columnName = Columns.EVENTID)
+    @JsonProperty(Columns.EVENT_ID)
+    @DatabaseField(columnName = Columns.EVENT_ID)
     private long event_id;
 
-    @JsonProperty(Columns.MESSAGE)
-    @DatabaseField(columnName = Columns.MESSAGE)
-    private String message;
+    @JsonProperty(Columns.CHAT_MESSAGE)
+    @DatabaseField(columnName = Columns.CHAT_MESSAGE)
+    private String chat_message;
 
     public Chat() {
     }
 
     @JsonIgnore
-    public Chat(long ormId, long id, long issuer, long event_id, String message) {
+    public Chat(long ormId, long chat_id, long chat_issuer, long event_id, String chat_message) {
         this.ormId = ormId;
-        this.id = id;
-        this.issuer = issuer;
+        this.chat_id = chat_id;
+        this.chat_issuer = chat_issuer;
         this.event_id = event_id;
-        this.message = message;
+        this.chat_message = chat_message;
     }
 
     @JsonIgnore
@@ -86,10 +86,10 @@ public class Chat
 
     public interface Columns
     {
-        String ID = "id";
+        String CHA_TID = "chat_id";
         String ORMID = "ormId";
-        String ISSUER = "issuer";
-        String EVENTID  = "event_id";
-        String MESSAGE = "message";
+        String CHAT_ISSUER = "chat_issuer";
+        String EVENT_ID = "event_id";
+        String CHAT_MESSAGE = "chat_message";
     }
 }

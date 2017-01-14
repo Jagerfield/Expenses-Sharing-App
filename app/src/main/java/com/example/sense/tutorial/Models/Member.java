@@ -14,13 +14,13 @@ public class Member
     @DatabaseField(id = true, columnName = Columns.ORMID)
     private long ormId;
 
-    @JsonProperty(Columns.ID)
-    @DatabaseField(columnName = Columns.ID)
-    private long id;
+    @JsonProperty(Columns.MEMBER_ID)
+    @DatabaseField(columnName = Columns.MEMBER_ID)
+    private long member_id;
 
-    @JsonProperty(Columns.NAME)
-    @DatabaseField(columnName = Columns.NAME)
-    private String name;
+    @JsonProperty(Columns.MEMBER_NAME)
+    @DatabaseField(columnName = Columns.MEMBER_NAME)
+    private String member_name;
 
     @JsonProperty(Columns.GMAIL)
     @DatabaseField(columnName = Columns.GMAIL)
@@ -30,21 +30,21 @@ public class Member
     @DatabaseField(columnName = Columns.UDID)
     private String udId;
 
-    @JsonProperty(Columns.ACCOUNTSTATUS)
-    @DatabaseField(columnName = Columns.ACCOUNTSTATUS)
+    @JsonProperty(Columns.ACCOUNT_STATUS)
+    @DatabaseField(columnName = Columns.ACCOUNT_STATUS)
     private boolean account_status;
 
-    @JsonProperty(Columns.IMAGE)
-    @DatabaseField(columnName = Columns.IMAGE)
+    @JsonProperty(Columns.MEMBER_IMAGE)
+    @DatabaseField(columnName = Columns.MEMBER_IMAGE)
     private String image;
 
     public Member() { }
 
     @JsonIgnore
-    public Member(long ormId, long id, String name, String gmail, String udId, boolean account_status, String image) {
+    public Member(long ormId, long member_id, String member_name, String gmail, String udId, boolean account_status, String image) {
         this.ormId = ormId;
-        this.id = id;
-        this.name = name;
+        this.member_id = member_id;
+        this.member_name = member_name;
         this.gmail = gmail;
         this.udId = udId;
         this.account_status = account_status;
@@ -60,20 +60,20 @@ public class Member
         this.ormId = ormId;
     }
     @JsonIgnore
-    public long getId() {
-        return id;
+    public long getMember_id() {
+        return member_id;
     }
     @JsonIgnore
-    public void setId(long id) {
-        this.id = id;
+    public void setMember_id(long member_id) {
+        this.member_id = member_id;
     }
     @JsonIgnore
-    public String getName() {
-        return name;
+    public String getMember_name() {
+        return member_name;
     }
     @JsonIgnore
-    public void setName(String name) {
-        this.name = name;
+    public void setMember_name(String member_name) {
+        this.member_name = member_name;
     }
     @JsonIgnore
     public String getGmail() {
@@ -150,13 +150,13 @@ public class Member
     }
 
     public interface Columns {
-        String ID = "id";
+        String MEMBER_ID = "member_id";
         String ORMID = "ormId";
-        String NAME = "name";
+        String MEMBER_NAME = "member_name";
         String GMAIL = "gmail";
         String UDID = "udId";
-        String ACCOUNTSTATUS = "account_status";
-        String IMAGE = "image";
+        String ACCOUNT_STATUS = "account_status";
+        String MEMBER_IMAGE = "member_image";
     }
 
 }

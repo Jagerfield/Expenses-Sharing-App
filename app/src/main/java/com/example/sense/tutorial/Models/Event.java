@@ -15,71 +15,71 @@ public class Event
     @DatabaseField(id = true, columnName = Columns.ORMID)
     private long ormId;
 
-    @JsonProperty(Columns.ID)
-    @DatabaseField(columnName = Columns.ID)
-    private long id;
+    @JsonProperty(Columns.EVENT_ID)
+    @DatabaseField(columnName = Columns.EVENT_ID)
+    private long event_id;
 
-    @JsonProperty(Columns.ISSUER)
-    @DatabaseField(columnName = Columns.ISSUER)
-    private long issuer;
+    @JsonProperty(Columns.EVENT_ADMIN)
+    @DatabaseField(columnName = Columns.EVENT_ADMIN)
+    private long event_admin;
 
-    @JsonProperty(Columns.NAME)
-    @DatabaseField(columnName = Columns.NAME)
-    private String name;
+    @JsonProperty(Columns.EVENT_NAME)
+    @DatabaseField(columnName = Columns.EVENT_NAME)
+    private String event_name;
 
-    @JsonProperty(Columns.DESCRIPTION)
-    @DatabaseField(columnName = Columns.DESCRIPTION)
-    private String description;
+    @JsonProperty(Columns.EVENT_DESCRIPTION)
+    @DatabaseField(columnName = Columns.EVENT_DESCRIPTION)
+    private String event_description;
 
-    @JsonProperty(Columns.CREATEDAT)
-    @DatabaseField(columnName = Columns.CREATEDAT)
-    private String created_at;
+    @JsonProperty(Columns.EVENT_CREATED_AT)
+    @DatabaseField(columnName = Columns.EVENT_CREATED_AT)
+    private String event_created_at;
 
-    @JsonProperty(Columns.IMAGE)
-    @DatabaseField(columnName = Columns.IMAGE)
-    private String image;
+    @JsonProperty(Columns.EVENT_IMAGE)
+    @DatabaseField(columnName = Columns.EVENT_IMAGE)
+    private String event_image;
 
 
     public Event(){}
 
     @JsonIgnore
-    public Event(long ormId, long id, long issuer, String name, String description, String created_at, String image) {
+    public Event(long ormId, long event_id, long event_admin, String event_name, String event_description, String event_created_at, String event_image) {
         this.ormId = ormId;
-        this.id = id;
-        this.issuer = issuer;
-        this.name = name;
-        this.description = description;
-        this.created_at = created_at;
-        this.image = image;
+        this.event_id = event_id;
+        this.event_admin = event_admin;
+        this.event_name = event_name;
+        this.event_description = event_description;
+        this.event_created_at = event_created_at;
+        this.event_image = event_image;
     }
 
 
     @JsonIgnore
-    public long getId() {
-        return id;
+    public long getEvent_id() {
+        return event_id;
     }
     @JsonIgnore
-    public void setId(long id) {
-        this.id = id;
-    }
-
-    @JsonIgnore
-    public long getIssuer() {
-        return issuer;
+    public void setEvent_id(long event_id) {
+        this.event_id = event_id;
     }
 
     @JsonIgnore
-    public void setIssuer(long issuer) {
-        this.issuer = issuer;
+    public long getEvent_admin() {
+        return event_admin;
     }
 
     @JsonIgnore
-    public String getName() {
-        return name;
+    public void setEvent_admin(long event_admin) {
+        this.event_admin = event_admin;
+    }
+
+    @JsonIgnore
+    public String getEvent_name() {
+        return event_name;
     }
     @JsonIgnore
-    public void setName(String name) {
-        this.name = name;
+    public void setEvent_name(String event_name) {
+        this.event_name = event_name;
     }
     @JsonIgnore
     public long getOrmId() {
@@ -90,28 +90,28 @@ public class Event
         this.ormId = ormId;
     }
     @JsonIgnore
-    public String getDescription() {
-        return description;
+    public String getEvent_description() {
+        return event_description;
     }
     @JsonIgnore
-    public void setDescription(String description) {
-        this.description = description;
+    public void setEvent_description(String event_description) {
+        this.event_description = event_description;
     }
     @JsonIgnore
-    public String getCreated_at() {
-        return image;
+    public String getEvent_created_at() {
+        return event_image;
     }
     @JsonIgnore
-    public void setCreated_at(String created_at) {
-        this.image = created_at;
+    public void setEvent_created_at(String event_created_at) {
+        this.event_image = event_created_at;
     }
     @JsonIgnore
-    public String getImage() {
-        return image;
+    public String getEvent_image() {
+        return event_image;
     }
     @JsonIgnore
-    public void setImage(String image) {
-        this.image = image;
+    public void setEvent_image(String event_image) {
+        this.event_image = event_image;
     }
 
     @JsonIgnore
@@ -156,13 +156,13 @@ public class Event
     }
 
     public interface Columns {
-        String ID = "id";
+        String EVENT_ID = "event_id";
         String ORMID = "ormId";
-        String NAME = "name";
-        String ISSUER = "issuer";
-        String DESCRIPTION = "description";
-        String CREATEDAT = "created_at";
-        String IMAGE = "image";
+        String EVENT_NAME = "event_name";
+        String EVENT_ADMIN = "event_admin";
+        String EVENT_DESCRIPTION = "event_description";
+        String EVENT_CREATED_AT = "event_created_at";
+        String EVENT_IMAGE = "event_image";
     }
 }
 

@@ -15,31 +15,31 @@ public class EventParticipant
     @DatabaseField(id = true, columnName = Columns.ORMID)
     private long ormId;
 
-    @JsonProperty(Columns.ID)
-    @DatabaseField(columnName = Columns.ID)
-    private long id;
+    @JsonProperty(Columns.EP_ID)
+    @DatabaseField(columnName = Columns.EP_ID)
+    private long ep_id;
 
-    @JsonProperty(Columns.EVENTID)
-    @DatabaseField(columnName = Columns.EVENTID)
+    @JsonProperty(Columns.EVEN_TID)
+    @DatabaseField(columnName = Columns.EVEN_TID)
     private long event_id;
 
-    @JsonProperty(Columns.MEMBERID)
-    @DatabaseField(columnName = Columns.MEMBERID)
+    @JsonProperty(Columns.MEMBER_ID)
+    @DatabaseField(columnName = Columns.MEMBER_ID)
     private long member_id;
 
-    @JsonProperty(Columns.STATUS)
-    @DatabaseField(columnName = Columns.STATUS)
-    private long status;
+    @JsonProperty(Columns.EP_STATUS)
+    @DatabaseField(columnName = Columns.EP_STATUS)
+    private long ep_status;
 
     public EventParticipant() { }
 
     @JsonIgnore
-    public EventParticipant(long ormId, long id, long event_id, long member_id, long status) {
+    public EventParticipant(long ormId, long ep_id, long event_id, long member_id, long ep_status) {
         this.ormId = ormId;
-        this.id = id;
+        this.ep_id = ep_id;
         this.event_id = event_id;
         this.member_id = member_id;
-        this.status = status;
+        this.ep_status = ep_status;
     }
 
     @JsonIgnore
@@ -51,12 +51,12 @@ public class EventParticipant
         this.member_id = member_id;
     }
     @JsonIgnore
-    public long getId() {
-        return id;
+    public long getEp_id() {
+        return ep_id;
     }
     @JsonIgnore
-    public void setId(long id) {
-        this.id = id;
+    public void setEp_id(long ep_id) {
+        this.ep_id = ep_id;
     }
     @JsonIgnore
     public long getEvent_id() {
@@ -75,12 +75,12 @@ public class EventParticipant
         this.ormId = ormId;
     }
     @JsonIgnore
-    public long getStatus() {
-        return status;
+    public long getEp_status() {
+        return ep_status;
     }
     @JsonIgnore
-    public void setStatus(long status) {
-        this.status = status;
+    public void setEp_status(long ep_status) {
+        this.ep_status = ep_status;
     }
 
     @JsonIgnore
@@ -124,11 +124,11 @@ public class EventParticipant
     }
 
     public interface Columns {
-        String ID = "id";
+        String EP_ID = "ep_id";
         String ORMID = "ormId";
-        String EVENTID = "event_id";
-        String MEMBERID = "member_id";
-        String STATUS = "status";
+        String EVEN_TID = "event_id";
+        String MEMBER_ID = "member_id";
+        String EP_STATUS = "ep_status";
 
 
     }
