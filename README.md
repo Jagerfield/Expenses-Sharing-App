@@ -46,6 +46,7 @@ with notifications of any changes, and enables them to communicate on the events
 5. Implemented Jackson for json parsing. 
 6. Implemented permissions checking.
 7. Implemented fetching mobile contacts.
+8. Currently modifying-finalizing db tables, and creating php apis. 
 ```
 
 ##Next
