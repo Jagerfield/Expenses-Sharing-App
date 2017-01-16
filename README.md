@@ -20,23 +20,32 @@ with notifications of any changes, and enables them to communicate on the events
 6. The owner of the event is the only one able to delete the event. 
 7. The event will log changes made on each request. 
 8. Once the event is created, the other members will be notified and the event will show up in their apps. 
-9. Each user can add/delete/edit their own transactions or leave the the event. 
+9. Each user can add/delete/edit their own transactions or leave the event. 
    status of each request will be registered and visible on both the owner's and the member's events.  
 10. All Actions made on the event and its transactions should be logged in text in the event and 
     participants notified.
 11. Text messages between the participants in an event is also possible to add to the event. 
+
+
+###App-Server Data Syncing
+1. On app start: 
+   When a user starts the app, the app will fetch a list of all the events that the user
+   had created and is a participating at. This events-list will be saved in the app local dp. 
+2. On Event or Transaction Add/Delete/Update action:
+   Every time a user commits an action to the server, the app will send notification to all the participants
+   in the event. Up on receiving the notification, the app syncs the event information with the server.     
 ```
 
 ##Project current status
 ```
 1. Developed wire-frames of GUI on paper.
-2. Created an app to access data on a WampServer. Wrote the server-side APIs in php for test purposes. 
+2. Created an app to access data on a Wamp Server. Wrote the server-side APIs in php for test purposes. 
    The app uses the Retrofit REST client and can currently post user-entries with pictures. 
 3. Completed the conceptual design for the relational database on the server.
-4. Created the normalised tables.
-5. Created some of the needed REST php apis onthe server side.
+4. Created the normalized tables.
+5. Created some of the needed REST php apis on the server side.
 6. Created relevant data models in the app.
-7. Implemented  OrmLite for providing a local database in the app. The purpose is to store events information so they 
+7. Implemented OrmLite for providing a local database in the app. The purpose is to store events information so they 
    can be viewed offline.
 8. Implemented Jackson for objects json parsing. 
 9. Implemented permissions checking.
