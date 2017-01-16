@@ -59,7 +59,7 @@ with notifications of any changes, and enables them to communicate on the events
 
 ## DB table design 
 
-<img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/db%20Expenses%20Sharing%20DB.PNG" width="600"/> &#160;
+<img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Expenses%20Sharing%20DB.PNG" width="700"/> &#160;
 
 
 
