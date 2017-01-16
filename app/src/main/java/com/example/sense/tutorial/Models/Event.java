@@ -99,11 +99,11 @@ public class Event
     }
     @JsonIgnore
     public String getEvent_created_at() {
-        return event_image;
+        return event_created_at;
     }
     @JsonIgnore
     public void setEvent_created_at(String event_created_at) {
-        this.event_image = event_created_at;
+        this.event_created_at = event_created_at;
     }
     @JsonIgnore
     public String getEvent_image() {

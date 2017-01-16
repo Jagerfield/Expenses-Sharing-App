@@ -207,12 +207,16 @@ function getEventById()
 	mysqli_close($connection);
 }	
 
+//Get events by Admin, date, or event id
 function getEvents()
 {
 	date_default_timezone_set('UTC');
 	global $connection;
 	$msg;
 	$events = array();
+	$event_participants = array();
+	$event_transactions = array();
+	$event_chats = array();
 	$remarks = array();
 	$event_admin;
 	$event_id;
@@ -267,22 +271,27 @@ function getEvents()
 			   FROM events E 		      
 			   WHERE E.event_admin = '$event_admin' AND E.event_created_at >= '$from_date' AND E.event_created_at <= '$to_date' 
 				;";		
+				
+				$msg = getRecords($sql, $events, $remarks);
+				header('Connect-Type: application/json');
+				echo json_encode(array("remarks"=>$remarks, "events"=>$events));
 		}
 		else
 		{
 			$sql="SELECT E.event_id, E.event_name, E.event_admin , E.event_description , E.event_created_at, E.event_image
 			   FROM events E 		      
-			   WHERE E.event_id = '$event_id' AND E.event_created_at >= '$from_date' AND E.event_created_at <= '$to_date' 
+			   WHERE E.event_id = '$event_id'
 				;";	
+				
+				$msg = getRecords($sql, $events, $remarks);
+				header('Connect-Type: application/json');
+				echo json_encode(array("remarks"=>$remarks, "events"=>$events, "event_participants"=>$event_participants, 
+				"event_transactions"=>$event_transactions, "event_chats"=>$event_chats));
 		}
 		
-		$msg = getRecords($sql, $events, $remarks);
+		
 	}	
-		   	
 	
-	
-	header('Connect-Type: application/json');
-	echo json_encode(array("remarks"=>$remarks, "events"=>$events));
 	mysqli_close($connection);
 }	
 
