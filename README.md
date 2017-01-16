@@ -53,12 +53,12 @@ with notifications of any changes, and enables them to communicate on the events
 ##Next
 ```
 1. Develop GUI.
-2. Develop more REST php apis as needed.
-3. Use Retrofit for communicating with the server.
+2. Develop necessary REST php apis as needed.
+3. Develop necessary Retrofit functionality.
 4. Develop data syncing mechanism.
-5. Verify their Gmail using Facebook Account Kit.
-6. Use Google Cloud Messaging (GCM) for push notifications.
-7. Complete development of app core logic, and GUI development using material design guidelines.
+5. Verify users Gmail using Facebook Account Kit.
+6. Use Google Cloud Messaging (GCM) for pushing notifications.
+7. Complete development of the app core logic, and GUI development using material design guidelines.
 ```
 
 
