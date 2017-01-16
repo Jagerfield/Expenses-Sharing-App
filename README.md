@@ -27,32 +27,28 @@ with notifications of any changes, and enables them to communicate on the events
 11. Text messages between the participants in an event is also possible to add to the event. 
 ```
 
-##The following will be implemented:
-```
-1. Verify their Gmail using Facebook Account Kit.
-2. Use Google Cloud Messaging (GCM) for push notifications.
-3. Develop the backend, that includes database tables and RESTful Web Service in PHP. 
-4. Develop core logic for the app and GUI using material design guidelines.
-```
-
 ##Project current status
 ```
-1. Created an app to access data on a WampServer. Wrote the server-side APIs in php for test purposes. 
+1. Developed wire-frames of GUI on paper.
+2. Created an app to access data on a WampServer. Wrote the server-side APIs in php for test purposes. 
    The app uses the Retrofit REST client and can currently post user-entries with pictures. 
-2. Completed the conceptual design for the server's db, and created tables.
-3. Created relevant data models in the app.
-4. Implemented  OrmLite for providing a db in the app. The purpose to store events information so they 
+3. Completed the conceptual design for the relational database on the server.
+4. Created the normalised tables.
+5. Created some of the needed REST php apis onthe server side.
+6. Created relevant data models in the app.
+7. Implemented  OrmLite for providing a local database in the app. The purpose is to store events information so they 
    can be viewed offline.
-5. Implemented Jackson for json parsing. 
-6. Implemented permissions checking.
-7. Implemented fetching mobile contacts.
-8. Currently modifying-finalizing db tables, and creating php apis. 
+8. Implemented Jackson for objects json parsing. 
+9. Implemented permissions checking.
+10. Implemented fetching mobile contacts. 
 ```
 
 ##Next
 ```
-1. Complete the php apis for the server tables.
-2. Convert server response jason to java pojo classes.
+1. Develop GUI.
+2. Develop more REST php apis as needed.
+3. Use Retrofit for communicating with the server.
+4. Develop syncing mechanism.
 3. Testing.
 ```
 
