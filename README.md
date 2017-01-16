@@ -57,7 +57,7 @@ with notifications of any changes, and enables them to communicate on the events
 ```
 
 
-## DB table design 
+## Expenses Sharing Database Table Relationsships 
 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Expenses%20Sharing%20DB.PNG" width="700"/> &#160;
 
