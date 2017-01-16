@@ -1,11 +1,11 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen event_name="activity_horizontal_margin">16dp</dimen>
-    <dimen event_name="activity_vertical_margin">16dp</dimen>
-    <dimen event_name="icon_size">24dp</dimen>
-    <dimen event_name="ImageMarginRight">24dp</dimen>
-    <dimen event_name="FieldMinHeight">24dp</dimen>
-    <dimen event_name="marginField">16dp</dimen>
-    <dimen event_name="mni_height">60dp</dimen>
-    <dimen event_name="text_size_18">18sp</dimen>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="icon_size">24dp</dimen>
+    <dimen name="ImageMarginRight">24dp</dimen>
+    <dimen name="FieldMinHeight">24dp</dimen>
+    <dimen name="marginField">16dp</dimen>
+    <dimen name="mni_height">60dp</dimen>
+    <dimen name="text_size_18">18sp</dimen>
 </resources>

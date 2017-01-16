@@ -30,25 +30,25 @@ public class Member
     @DatabaseField(columnName = Columns.UDID)
     private String udId;
 
-    @JsonProperty(Columns.ACCOUNT_STATUS)
-    @DatabaseField(columnName = Columns.ACCOUNT_STATUS)
-    private boolean account_status;
+    @JsonProperty(Columns.MEMBER_ACCOUNT_STATUS)
+    @DatabaseField(columnName = Columns.MEMBER_ACCOUNT_STATUS)
+    private boolean member_account_status;
 
     @JsonProperty(Columns.MEMBER_IMAGE)
     @DatabaseField(columnName = Columns.MEMBER_IMAGE)
-    private String image;
+    private String member_image;
 
     public Member() { }
 
     @JsonIgnore
-    public Member(long ormId, long member_id, String member_name, String gmail, String udId, boolean account_status, String image) {
+    public Member(long ormId, long member_id, String member_name, String gmail, String udId, boolean member_account_status, String member_image) {
         this.ormId = ormId;
         this.member_id = member_id;
         this.member_name = member_name;
         this.gmail = gmail;
         this.udId = udId;
-        this.account_status = account_status;
-        this.image = image;
+        this.member_account_status = member_account_status;
+        this.member_image = member_image;
     }
 
     @JsonIgnore
@@ -92,20 +92,20 @@ public class Member
         this.udId = udId;
     }
     @JsonIgnore
-    public boolean isAccount_status() {
-        return account_status;
+    public boolean isMember_account_status() {
+        return member_account_status;
     }
     @JsonIgnore
-    public void setAccount_status(boolean account_status) {
-        this.account_status = account_status;
+    public void setMember_account_status(boolean member_account_status) {
+        this.member_account_status = member_account_status;
     }
     @JsonIgnore
-    public String getImage() {
-        return image;
+    public String getMember_image() {
+        return member_image;
     }
     @JsonIgnore
-    public void setImage(String image) {
-        this.image = image;
+    public void setMember_image(String member_image) {
+        this.member_image = member_image;
     }
 
     @JsonIgnore
@@ -155,7 +155,7 @@ public class Member
         String MEMBER_NAME = "member_name";
         String GMAIL = "gmail";
         String UDID = "udId";
-        String ACCOUNT_STATUS = "account_status";
+        String MEMBER_ACCOUNT_STATUS = "member_account_status";
         String MEMBER_IMAGE = "member_image";
     }
 

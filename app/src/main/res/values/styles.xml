@@ -1,31 +1,21 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style event_name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
     </style>
 
 
-    <style event_name="edit_text_style">
-        <item event_name="android:textSize">@dimen/text_size_18</item>
-        <item event_name="android:textColor">@color/greytext</item>
-        <item event_name="android:layout_centerVertical">true</item>
-        <item event_name="android:fadingEdge">horizontal</item>
-        <item event_name="android:fadingEdgeLength">8dp</item>
+    <style name="edit_text_style">
+        <item name="android:textSize">@dimen/text_size_18</item>
+        <item name="android:textColor">@color/greytext</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fadingEdge">horizontal</item>
+        <item name="android:fadingEdgeLength">8dp</item>
 
-        <item event_name="colorControlNormal">@color/blue_link</item>
-        <item event_name="colorControlActivated">@color/menublue</item>
+        <item name="colorControlNormal">@color/blue_link</item>
+        <item name="colorControlActivated">@color/menublue</item>
 
     </style>
-
-    <!--<style event_name="TextLabel" parent="TextAppearance.AppCompat">-->
-        <!--&lt;!&ndash; Hint color and label color in FALSE state &ndash;&gt;-->
-        <!--<item event_name="android:textColorHint">@color/Color Name</item>-->
-        <!--<item event_name="android:textSize">20sp</item>-->
-        <!--&lt;!&ndash; Label color in TRUE state and bar color FALSE and TRUE State &ndash;&gt;-->
-        <!--<item event_name="colorAccent">@color/Color Name</item>-->
-        <!--<item event_name="colorControlNormal">@color/Color Name</item>-->
-        <!--<item event_name="colorControlActivated">@color/Color Name</item>-->
-    <!--</style>-->
 
 </resources>

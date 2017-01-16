@@ -6,7 +6,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <android.support.v7.widget.RecyclerView
-        android:chat_id="@+chat_id/rv_usertList"
+        android:id="@+id/rv_usertList"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="0dp"
@@ -14,7 +14,7 @@
          />
 
     <android.support.design.widget.FloatingActionButton
-        android:chat_id="@+chat_id/fabAddUser"
+        android:id="@+id/fabAddUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="34dp"
@@ -27,7 +27,7 @@
 
 
     <android.support.design.widget.FloatingActionButton
-        android:chat_id="@+chat_id/fabMembersList"
+        android:id="@+id/fabMembersList"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="34dp"

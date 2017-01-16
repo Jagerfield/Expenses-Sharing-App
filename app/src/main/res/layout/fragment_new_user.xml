@@ -13,14 +13,14 @@
         android:layout_height="match_parent">
 
     <android.support.design.widget.FloatingActionButton
-        android:chat_id="@+chat_id/fabAddUser"
+        android:id="@+id/fabAddUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:src="@drawable/ic_camera_white_24dp"
         app:backgroundTint="@android:color/holo_blue_light"
         app:fabSize="auto"
-        app:layout_anchor="@+chat_id/Imagecard"
+        app:layout_anchor="@+id/Imagecard"
         app:layout_anchorGravity="bottom|right|end" />
 
     <LinearLayout
@@ -30,7 +30,7 @@
         android:weightSum="2">
 
         <android.support.v7.widget.CardView
-            android:chat_id="@+chat_id/Imagecard"
+            android:id="@+id/Imagecard"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="0.75"
@@ -46,7 +46,7 @@
                 android:gravity="center">
 
                 <ImageView
-                    android:chat_id="@+chat_id/ivProfilePic"
+                    android:id="@+id/ivProfilePic"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:adjustViewBounds="true"
@@ -59,7 +59,7 @@
         </android.support.v7.widget.CardView>
 
         <android.support.v7.widget.CardView
-            android:chat_id="@+chat_id/cardView"
+            android:id="@+id/cardView"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1.25"
@@ -84,7 +84,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:chat_id="@+chat_id/ivName"
+                        android:id="@+id/ivName"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:layout_gravity="center"
@@ -101,7 +101,7 @@
                         android:orientation="vertical">
 
                         <android.support.design.widget.TextInputLayout
-                            android:chat_id="@+chat_id/nameText"
+                            android:id="@+id/nameText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
@@ -112,7 +112,7 @@
                             android:theme="@style/edit_text_style">
 
                             <android.support.design.widget.TextInputEditText
-                                android:chat_id="@+chat_id/inputName"
+                                android:id="@+id/inputName"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="textCapWords|textNoSuggestions"
@@ -134,7 +134,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:chat_id="@+chat_id/ivMobile"
+                        android:id="@+id/ivMobile"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:layout_gravity="center"
@@ -151,7 +151,7 @@
                         android:orientation="vertical">
 
                         <android.support.design.widget.TextInputLayout
-                            android:chat_id="@+chat_id/mobileText"
+                            android:id="@+id/mobileText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
@@ -163,7 +163,7 @@
                             >
 
                             <android.support.design.widget.TextInputEditText
-                                android:chat_id="@+chat_id/inputMobile"
+                                android:id="@+id/inputMobile"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:lines="1"
@@ -184,7 +184,7 @@
                     android:orientation="horizontal">
 
                     <ImageView
-                        android:chat_id="@+chat_id/ivEmail"
+                        android:id="@+id/ivEmail"
                         android:layout_width="@dimen/icon_size"
                         android:layout_height="@dimen/icon_size"
                         android:layout_gravity="center"
@@ -201,7 +201,7 @@
                         android:orientation="vertical">
 
                         <android.support.design.widget.TextInputLayout
-                            android:chat_id="@+chat_id/emailText"
+                            android:id="@+id/emailText"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginLeft="8dp"
@@ -212,7 +212,7 @@
                             android:theme="@style/edit_text_style">
 
                             <android.support.design.widget.TextInputEditText
-                                android:chat_id="@+chat_id/inputEmail"
+                                android:id="@+id/inputEmail"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:inputType="textEmailAddress"
@@ -226,7 +226,7 @@
                 </LinearLayout>
 
                 <Button
-                    android:chat_id="@+chat_id/button"
+                    android:id="@+id/button"
                     android:layout_width="match_parent"
                     android:layout_height="35dp"
                     android:layout_marginBottom="16dp"

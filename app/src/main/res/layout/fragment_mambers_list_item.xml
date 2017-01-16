@@ -6,7 +6,7 @@
     >
 
     <ImageView
-        android:chat_id="@+chat_id/iv_user_Image"
+        android:id="@+id/iv_user_Image"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_alignParentLeft="true"
@@ -15,12 +15,12 @@
         />
 
     <TextView
-        android:chat_id="@+chat_id/tv_name"
+        android:id="@+id/tv_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:layout_centerVertical="true"
-        android:layout_toRightOf="@+chat_id/iv_user_Image"
+        android:layout_toRightOf="@id/iv_user_Image"
         android:text="User Name"
         android:lines="1"
         android:maxLines="1"
