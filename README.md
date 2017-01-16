@@ -25,15 +25,13 @@ with notifications of any changes, and enables them to communicate on the events
 10. All Actions made on the event and its transactions should be logged in text in the event and 
     participants notified.
 11. Text messages between the participants in an event is also possible to add to the event. 
-
-
-###App-Server Data Syncing
-1. On app start: 
-   When a user starts the app, the app will fetch a list of all the events that the user
-   had created and is a participating at. This events-list will be saved in the app local dp. 
-2. On Event or Transaction Add/Delete/Update action:
-   Every time a user commits an action to the server, the app will send notification to all the participants
-   in the event. Up on receiving the notification, the app syncs the event information with the server.     
+12. App-Server Data Syncing
+   a. On app start: 
+      When a user starts the app, the app will fetch a list of all the events that the user
+      had created and is a participating at. This events-list will be saved in the app local dp. 
+   b. On Event or Transaction Add/Delete/Update action:
+      Every time a user commits an action to the server, the app will send notification to all the participants
+      in the event. Up on receiving the notification, the app syncs the event information with the server.     
 ```
 
 ##Project current status
