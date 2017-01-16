@@ -45,7 +45,7 @@ with notifications of any changes, and enables them to communicate on the events
 6. Created relevant data models in the app.
 7. Implemented OrmLite for providing a local database in the app. The purpose is to store events information so they 
    can be viewed offline.
-8. Implemented Jackson for objects json parsing. 
+8. Implemented Jackson for object json parsing. 
 9. Implemented permissions checking.
 10. Implemented fetching mobile contacts. 
 ```
