@@ -10,7 +10,8 @@ import android.widget.Toast;
 import com.example.sense.tutorial.Retrofit.IRetrofit;
 import com.example.sense.tutorial.AddUserFragment.AddUserFragment;
 import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
-import com.example.sense.tutorial.Utilities.C;
+import com.example.sense.tutorial.Utilities.Util;
+
 import jagerfield.utilities.lib.AppUtilities;
 import jagerfield.utilities.lib.PermissionsUtil.GuiDialog.PermissionsManager;
 import jagerfield.utilities.lib.PermissionsUtil.PermissionsUtil;
@@ -31,23 +32,23 @@ public class MainActivity extends AppCompatActivity {
     public void checkPermissions()
     {
         PermissionsUtil permissionsUtil = AppUtilities.getPermissionUtil(this);
-        IGetPermissionResult result = permissionsUtil.getPermissionResults(C.PERMISSIONS_ARRAY);
+        IGetPermissionResult result = permissionsUtil.getPermissionResults(Util.PERMISSIONS_ARRAY);
 
         if (result.isGranted())
         {
-            C.launchFragment(this, new UsersListFragment());
+            Util.launchFragment(this, new UsersListFragment());
         }
         else if (!result.isGranted() && Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
         {
             //There are missing permissions ask for them
-            permissionsUtil.requestPermissions(C.PERMISSIONS_ARRAY);
+            permissionsUtil.requestPermissions(Util.PERMISSIONS_ARRAY);
         }
         else if (!result.isGranted() && Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
         {
             //For SDK less than M, there are permissions missing in the manifest
             String missingPermissions = TextUtils.join(", ", result.getMissingInManifest_ForSdkBelowM()).trim();
             Toast.makeText(this, "Following permissions are missing : " + missingPermissions, Toast.LENGTH_LONG).show();
-            Log.e(C.TAG_LIB, "Following permissions are missing : " + missingPermissions);
+            Log.e(Util.TAG_LIB, "Following permissions are missing : " + missingPermissions);
         }
     }
 
@@ -75,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
 
             if (result.isGranted())
             {
-                C.launchFragment(this, new UsersListFragment());
+                Util.launchFragment(this, new UsersListFragment());
                 return;
             }
 
@@ -90,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
                      * Member accepted all requested permissions
                      */
 
-                    C.launchFragment(activity, new UsersListFragment());
+                    Util.launchFragment(activity, new UsersListFragment());
                 }
 
                 @Override

@@ -21,7 +21,7 @@ import com.example.sense.tutorial.R;
 import com.example.sense.tutorial.Retrofit.User;
 import com.example.sense.tutorial.Retrofit.RetrofitManager;
 import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
-import com.example.sense.tutorial.Utilities.C;
+import com.example.sense.tutorial.Utilities.Util;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -58,7 +58,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
     {
         if (v == fabAddUser)
         {
-            EasyImage.openChooserWithGallery(this, "Choose profile picture", C.CHOOSE_PHOTO_CODE);
+            EasyImage.openChooserWithGallery(this, "Choose profile picture", Util.CHOOSE_PHOTO_CODE);
         }
         else if (v== insertUserButton)
         {
@@ -85,7 +85,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
                         {
                             if (activity == null){return;}
                             Toast.makeText(activity, "Member : " + addedUsersList.get(0).getName() + " is saved", Toast.LENGTH_LONG).show();
-                            Log.e(C.TAG_LIB, "Member : " + addedUsersList.get(0).getName() + " is saved");
+                            Log.e(Util.TAG_LIB, "Member : " + addedUsersList.get(0).getName() + " is saved");
                             String str = "";
                         }
                     }
@@ -208,7 +208,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
             @Override
             public void onImagesPicked(List<File> imagesFiles, EasyImage.ImageSource source, int type) {
                 //Handle the images
-                if (type == C.CHOOSE_PHOTO_CODE)
+                if (type == Util.CHOOSE_PHOTO_CODE)
                 {
                     image = imagesFiles.get(0);
                     if (image==null)
@@ -234,7 +234,7 @@ public class AddUserFragment extends Fragment implements View.OnClickListener {
 
     private void returnToUserList()
     {
-        C.launchFragment(((AppCompatActivity) getActivity()), new UsersListFragment());
+        Util.launchFragment(((AppCompatActivity) getActivity()), new UsersListFragment());
     }
 
 }

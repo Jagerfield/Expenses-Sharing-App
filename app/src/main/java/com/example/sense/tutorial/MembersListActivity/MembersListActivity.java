@@ -15,7 +15,8 @@ import com.bumptech.glide.Glide;
 import com.example.sense.tutorial.R;
 import com.example.sense.tutorial.Retrofit.User;
 import com.example.sense.tutorial.Retrofit.RetrofitManager;
-import com.example.sense.tutorial.Utilities.C;
+import com.example.sense.tutorial.Utilities.Util;
+
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -64,7 +65,7 @@ public class MembersListActivity extends AppCompatActivity
         //Check permission
         if (!AppUtilities.getPermissionUtil(this).isPermissionGranted(android.Manifest.permission.READ_CONTACTS).isGranted())
         {
-            Log.e(C.TAG_LIB, android.Manifest.permission.READ_CONTACTS + " permission is missing");
+            Log.e(Util.TAG_LIB, android.Manifest.permission.READ_CONTACTS + " permission is missing");
             return;
         }
 
@@ -74,7 +75,7 @@ public class MembersListActivity extends AppCompatActivity
 
         if (contactsList == null)
         {
-            Log.e(C.TAG_LIB, "contactsList is null");
+            Log.e(Util.TAG_LIB, "contactsList is null");
             return;
         }
 

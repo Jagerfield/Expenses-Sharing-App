@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.view.Window;
 
-import com.example.sense.tutorial.Utilities.C;
+import com.example.sense.tutorial.Utilities.Util;
 import com.example.sense.tutorial.AddUserFragment.UserEntryEvaluation;
 import com.squareup.okhttp.MediaType;
 import com.squareup.okhttp.OkHttpClient;
@@ -46,7 +46,7 @@ public class RetrofitManager
             @Override
             public void onResponse(Response<RestResponse> response, Retrofit retrofit) {
                 pd.dismiss();
-                if (response.code() == C.NETWORK_SUCCESS_CODE) {
+                if (response.code() == Util.NETWORK_SUCCESS_CODE) {
                     if (response.body().getErrors().isEmpty()) {
                         ArrayList<User> users = response.body().getUsers();
 
@@ -107,7 +107,7 @@ public class RetrofitManager
             public void onResponse(Response<RestResponse> response, Retrofit retrofit) {
                 pd.dismiss();
 
-                if (response.code() == C.NETWORK_SUCCESS_CODE)
+                if (response.code() == Util.NETWORK_SUCCESS_CODE)
                 {
                     if (response.body().getErrors().isEmpty())
                     {
@@ -146,7 +146,7 @@ public class RetrofitManager
         httpClient.setWriteTimeout(10, TimeUnit.MINUTES);
 
         Retrofit retrofit = new Retrofit.Builder()
-                .baseUrl(C.BASE_URL)
+                .baseUrl(Util.BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(httpClient)
                 .build();

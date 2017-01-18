@@ -20,9 +20,7 @@ import com.example.sense.tutorial.R;
 import com.example.sense.tutorial.Retrofit.User;
 import com.example.sense.tutorial.Retrofit.RetrofitManager;
 import com.example.sense.tutorial.AddUserFragment.AddUserFragment;
-import com.example.sense.tutorial.Utilities.C;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.example.sense.tutorial.Utilities.Util;
 
 import java.util.ArrayList;
 import jp.wasabeef.glide.transformations.CropCircleTransformation;
@@ -55,7 +53,7 @@ public class UsersListFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                C.launchFragment(((AppCompatActivity) getActivity()), new AddUserFragment());
+                Util.launchFragment(((AppCompatActivity) getActivity()), new AddUserFragment());
             }
         });
 
