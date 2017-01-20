@@ -64,9 +64,4 @@ public class RestEventResponse
 //        this.eventTransaction = eventTransaction;
 //    }
 
-//    @Override
-//    public String toString()
-//    {
-//        return "ClassPojo [eventChat = "+eventChat+", event = "+event+", remarks = "+remarks+", eventParticipant = "+eventParticipant+", eventTransaction = "+eventTransaction+"]";
-//    }
 }
