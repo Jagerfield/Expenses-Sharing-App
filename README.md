@@ -61,11 +61,12 @@ with notifications of any changes, and enables them to communicate on the events
 7. Complete development of the app core logic, and GUI development using material design guidelines.
 ```
 
+##Database Table Relationsships 
 
-## Expenses Sharing Database Table Relationsships 
+###Database Table Relationsships 
 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Expenses%20Sharing%20DB.PNG" width="700"/> &#160;
 
+###Admin Login/Logout flow design
 
-
-
+<img src="https://www.lucidchart.com/documents/view/97337ff3-991b-423d-b1bd-55552b89b167" width="700"/> &#160;
