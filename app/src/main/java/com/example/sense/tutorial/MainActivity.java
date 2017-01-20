@@ -9,8 +9,13 @@ import android.util.Log;
 import android.widget.Toast;
 import com.example.sense.tutorial.Retrofit.IRetrofit;
 import com.example.sense.tutorial.AddUserFragment.AddUserFragment;
+import com.example.sense.tutorial.Retrofit.Models.Event;
+import com.example.sense.tutorial.Retrofit.Models.RestEventResponse;
+import com.example.sense.tutorial.Retrofit.RetrofitEventManager;
 import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
 import com.example.sense.tutorial.Utilities.Util;
+
+import java.util.ArrayList;
 
 import jagerfield.utilities.lib.AppUtilities;
 import jagerfield.utilities.lib.PermissionsUtil.GuiDialog.PermissionsManager;
@@ -26,7 +31,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        checkPermissions();
+        RetrofitEventManager retrofitEventManager = RetrofitEventManager.newInstance(this);
+        retrofitEventManager.getEventsbyUser("GET_EVENTS", "5", "4", "", "", new RetrofitEventManager.IRetrofitCallback() {
+            @Override
+            public void getEventResponse(RestEventResponse restEventResponse)
+            {
+                RestEventResponse response = restEventResponse;
+                String str = "";
+            }
+
+            @Override
+            public void eventsByUser(ArrayList<Event> eventsByUser)
+            {
+                ArrayList<Event> eventsList = eventsByUser;
+                String str = "";
+            }
+        });
+
+//        checkPermissions();
     }
 
     public void checkPermissions()

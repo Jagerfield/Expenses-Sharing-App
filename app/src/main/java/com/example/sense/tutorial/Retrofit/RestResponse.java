@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public class RestResponse
 {
     private ArrayList<User> users;
+
     private ArrayList<String> errors;
 
     public ArrayList<User> getUsers() {

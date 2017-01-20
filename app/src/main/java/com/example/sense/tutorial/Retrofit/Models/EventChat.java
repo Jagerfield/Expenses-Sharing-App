@@ -1,6 +1,6 @@
 package com.example.sense.tutorial.Retrofit.Models;
 
-public class Event_chat
+public class EventChat
 {
     private String chat_id;
 

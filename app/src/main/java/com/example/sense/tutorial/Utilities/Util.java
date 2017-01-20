@@ -2,14 +2,11 @@ package com.example.sense.tutorial.Utilities;
 
 import android.Manifest;
 import android.app.Activity;
-import android.content.pm.PackageManager;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.os.Build;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 import com.example.sense.tutorial.R;

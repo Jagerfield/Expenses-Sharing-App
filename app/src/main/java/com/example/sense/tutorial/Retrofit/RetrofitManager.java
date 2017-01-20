@@ -3,7 +3,6 @@ package com.example.sense.tutorial.Retrofit;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.view.Window;
-
 import com.example.sense.tutorial.Utilities.Util;
 import com.example.sense.tutorial.AddUserFragment.UserEntryEvaluation;
 import com.squareup.okhttp.MediaType;
