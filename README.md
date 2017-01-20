@@ -69,4 +69,4 @@ with notifications of any changes, and enables them to communicate on the events
 
 ###Admin Login/Logout flow design
 
-<img src="https://www.lucidchart.com/documents/view/97337ff3-991b-423d-b1bd-55552b89b167" width="700"/> &#160;
+<img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Diagrams/Admin%20login_logout.png" width="700"/> &#160;
