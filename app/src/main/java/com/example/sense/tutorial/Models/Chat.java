@@ -46,7 +46,7 @@ public class Chat
     }
 
     @JsonIgnore
-    public Chat getObj(String jsonString)
+    public static Chat getObjFromJackson(String jsonString)
     {
         Chat chat = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -68,7 +68,7 @@ public class Chat
     }
 
     @JsonIgnore
-    public String getJsonString(Chat chat)
+    public static String getJsonString(Chat chat)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";

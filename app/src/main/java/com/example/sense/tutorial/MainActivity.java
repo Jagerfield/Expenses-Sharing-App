@@ -1,5 +1,6 @@
 package com.example.sense.tutorial;
 
+import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -7,15 +8,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.sense.tutorial.Models.Admin;
 import com.example.sense.tutorial.Retrofit.IRetrofit;
 import com.example.sense.tutorial.AddUserFragment.AddUserFragment;
-import com.example.sense.tutorial.Retrofit.Models.Event;
-import com.example.sense.tutorial.Retrofit.Models.RestEventResponse;
-import com.example.sense.tutorial.Retrofit.RetrofitEventManager;
 import com.example.sense.tutorial.UsersListFragment.UsersListFragment;
+import com.example.sense.tutorial.Utilities.PreferenceUtil;
 import com.example.sense.tutorial.Utilities.Util;
-
-import java.util.ArrayList;
 
 import jagerfield.utilities.lib.AppUtilities;
 import jagerfield.utilities.lib.PermissionsUtil.GuiDialog.PermissionsManager;
@@ -31,24 +30,53 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RetrofitEventManager retrofitEventManager = RetrofitEventManager.newInstance(this);
-        retrofitEventManager.getEventsbyUser("GET_EVENTS", "5", "4", "", "", new RetrofitEventManager.IRetrofitCallback() {
-            @Override
-            public void getEventResponse(RestEventResponse restEventResponse)
-            {
-                RestEventResponse response = restEventResponse;
-                String str = "";
-            }
+        if (isRegistered())
+        {
 
-            @Override
-            public void eventsByUser(ArrayList<Event> eventsByUser)
-            {
-                ArrayList<Event> eventsList = eventsByUser;
-                String str = "";
-            }
-        });
+        }
+        else
+        {
+            Intent intent = new Intent(this, LoginActivity.class);
+//            intent.putExtra(Util.MODE_ACTIVITY, Util.REGISTER);
+            startActivity(intent);
+        }
+
+
+//        RetrofitEventManager retrofitEventManager = RetrofitEventManager.newInstance(this);
+//        retrofitEventManager.getEventsbyUser("GET_EVENTS", "5", "4", "", "", new RetrofitEventManager.IRetrofitCallback() {
+//            @Override
+//            public void getEventResponse(RestEventResponse restEventResponse)
+//            {
+//                RestEventResponse response = restEventResponse;
+//                String str = "";
+//            }
+//
+//            @Override
+//            public void eventsByUser(ArrayList<Event> eventsByUser)
+//            {
+//                ArrayList<Event> eventsList = eventsByUser;
+//                String str = "";
+//            }
+//        });
 
 //        checkPermissions();
+    }
+
+    private boolean isRegistered()
+    {
+        String jacksonString = PreferenceUtil.getString(this, Util.ADMIN_JACKSON_STRING, "");
+        Admin admin = null;
+
+        if (jacksonString!=null && !jacksonString.isEmpty())
+        {
+            admin = Admin.getObjFromJackson(jacksonString);
+            if (admin!=null)
+            {
+                return admin.checkObjectValues();
+            }
+        }
+
+        return false;
     }
 
     public void checkPermissions()

@@ -19,7 +19,10 @@ public class Util
     public static final String EVENTS_API = "events.php";
     public static final int CHOOSE_PHOTO_CODE = 100;
     public static final String TAG_LIB = "TAG_LIB";
-    public static final String APP_PREFERENCES = "APP_PREFERENCES";
+    public static final String ADMIN_JACKSON_STRING = "ADMIN_JACKSON_STRING";
+//    public static final String MODE_ACTIVITY = "MODE_ACTIVITY";
+//    public static final String REGISTER = "REGISTER";
+//    public static final String LOGIN = "LOGIN";
 
     public final static String[] PERMISSIONS_ARRAY = {
             Manifest.permission.WRITE_EXTERNAL_STORAGE,

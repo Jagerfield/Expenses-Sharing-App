@@ -111,7 +111,7 @@ public class Member
     }
 
     @JsonIgnore
-    public Member getObj(String jsonString)
+    public static Member getObjFromJackson(String jsonString)
     {
         Member member = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -133,7 +133,7 @@ public class Member
     }
 
     @JsonIgnore
-    public String getJsonString(Member member)
+    public static String getJsonString(Member member)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";

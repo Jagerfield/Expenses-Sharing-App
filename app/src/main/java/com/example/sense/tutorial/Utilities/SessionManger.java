@@ -18,9 +18,9 @@ public class SessionManger
 
     public void setAppOwner(Member member)
     {
-        PrefrenceUtil.setLong(context, ID_KEY, member.getMember_id());
-        PrefrenceUtil.setString(context, GMAIL_KEY, member.getGmail());
-        PrefrenceUtil.setString(context, NAME_KEY, member.getMember_name());
+        PreferenceUtil.setLong(context, ID_KEY, member.getMember_id());
+        PreferenceUtil.setString(context, GMAIL_KEY, member.getGmail());
+        PreferenceUtil.setString(context, NAME_KEY, member.getMember_name());
     }
 
     public Member regtAppOwner(){
@@ -30,11 +30,11 @@ public class SessionManger
 
     public boolean getHasLogedIn()
     {
-        return PrefrenceUtil.getBoolean(context, HASLOGEDN_KEY, false);
+        return PreferenceUtil.getBoolean(context, HASLOGEDN_KEY, false);
     }
 
     public void setHasLogedIn(boolean status)
     {
-        PrefrenceUtil.setBoolean(context, HASLOGEDN_KEY, status);
+        PreferenceUtil.setBoolean(context, HASLOGEDN_KEY, status);
     }
 }
