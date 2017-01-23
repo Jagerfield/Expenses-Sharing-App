@@ -72,5 +72,5 @@ with notifications of any changes, and enables them to communicate on the events
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Diagrams/Admin%20login_logout%20flow.png" width="700"/> &#160;
 
 ###Admin Gmail Login flow design
-I will probably only use this as the standard.
+I will probably only use this as the standard. 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Diagrams/Gmail_Login.PNG" width="700"/> &#160;
