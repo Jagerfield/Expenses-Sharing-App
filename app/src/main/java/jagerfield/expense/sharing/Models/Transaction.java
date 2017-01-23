@@ -65,7 +65,7 @@ public class Transaction
     }
 
     @JsonIgnore
-    public static Transaction getObjFromJackson(String jsonString)
+    public static Transaction convertJsonStrToObj(String jsonString)
     {
         Transaction transaction = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -87,7 +87,7 @@ public class Transaction
     }
 
     @JsonIgnore
-    public static String getJsonString(Transaction transaction)
+    public static String convertObjToJsonStr(Transaction transaction)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";

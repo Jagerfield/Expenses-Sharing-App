@@ -3,18 +3,12 @@ package jagerfield.expense.sharing;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.Toast;
-
-import com.google.android.gms.auth.api.Auth;
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
-import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 import jagerfield.expense.sharing.Models.Admin;
 import jagerfield.expense.sharing.Retrofit.IRetrofit;
 import jagerfield.expense.sharing.AddUserFragment.AddUserFragment;
@@ -43,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         else
         {
             Intent intent = new Intent(this, LoginActivity.class);
-//            intent.putExtra(Util.MODE_ACTIVITY, Util.REGISTER);
             startActivity(intent);
         }
 
@@ -75,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (jacksonString!=null && !jacksonString.isEmpty())
         {
-            admin = Admin.getObjFromJackson(jacksonString);
+            admin = Admin.convertJsonStrToObj(jacksonString);
             if (admin!=null)
             {
                 return admin.checkObjectValues();

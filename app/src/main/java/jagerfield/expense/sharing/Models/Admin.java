@@ -40,11 +40,11 @@ public class Admin
     }
 
     @JsonIgnore
-    public long getMember_id() {
+    public long getMemberId() {
         return member_id;
     }
     @JsonIgnore
-    public void setMember_id(long member_id) {
+    public void setMemberId(long member_id) {
         this.member_id = member_id;
     }
 
@@ -52,7 +52,7 @@ public class Admin
     public String getAdminName() {
         return admin_name;
     }
-    public void setAdmin_name(String admin_name) {
+    public void setAdminName(String admin_name) {
         this.admin_name = admin_name;
     }
 
@@ -75,11 +75,11 @@ public class Admin
     }
 
     @JsonIgnore
-    public String getAdmin_image() {
+    public String getAdminImage() {
         return admin_image;
     }
     @JsonIgnore
-    public void setAdmin_image(String admin_image) {
+    public void setAdminImage(String admin_image) {
         this.admin_image = admin_image;
     }
 
@@ -93,7 +93,7 @@ public class Admin
     }
 
     @JsonIgnore
-    public static Admin getObjFromJackson(String jsonString)
+    public static Admin convertJsonStrToObj(String jsonString)
     {
         Admin admin = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -115,7 +115,7 @@ public class Admin
     }
 
     @JsonIgnore
-    public static String getJsonString(Admin admin)
+    public static String convertObjToJsonStr(Admin admin)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";

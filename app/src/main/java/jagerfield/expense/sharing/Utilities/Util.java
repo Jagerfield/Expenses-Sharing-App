@@ -21,7 +21,7 @@ public class Util
     public static final int CHOOSE_PHOTO_CODE = 100;
     public static final String TAG_LIB = "TAG_LIB";
     public static final String ADMIN_JACKSON_STRING = "ADMIN_JACKSON_STRING";
-//    public static final String MODE_ACTIVITY = "MODE_ACTIVITY";
+    public static final String LOGIN_RESULT = "LOGIN_RESULT";
 //    public static final String REGISTER = "REGISTER";
 //    public static final String LOGIN = "LOGIN";
 

@@ -84,7 +84,7 @@ public class EventParticipant
     }
 
     @JsonIgnore
-    public static EventParticipant getObjFromJackson(String jsonString)
+    public static EventParticipant convertJsonStrToObj(String jsonString)
     {
         EventParticipant eventParticipant = null;
         ObjectMapper mapper = new ObjectMapper();
@@ -106,7 +106,7 @@ public class EventParticipant
     }
 
     @JsonIgnore
-    public static String getJsonString(EventParticipant eventParticipant)
+    public static String convertObjToJsonStr(EventParticipant eventParticipant)
     {
         ObjectMapper mapper = new ObjectMapper();
         String jsonString= "";
