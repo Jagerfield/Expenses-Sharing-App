@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "199683481038",
+    "project_id": "expenses-sharing-app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:199683481038:android:44ad71ff315c11b9",
+        "android_client_info": {
+          "package_name": "jagerfield.expense.sharing"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "199683481038-t7nusielp297vrg1s2th6qdcivtbfr42.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jagerfield.expense.sharing",
+            "certificate_hash": "8505ACC5C31B7556384B6926476FD66C3D2E193F"
+          }
+        },
+        {
+          "client_id": "199683481038-nkc8r393n3khucdr2ok6b8ubm7vdkee0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD2D2xUESA5xoiVq5b6ed_1c1-yC5jKuHc"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
