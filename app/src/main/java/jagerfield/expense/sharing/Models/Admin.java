@@ -134,7 +134,8 @@ public class Admin
 
     public boolean checkObjectValues()
     {
-        if (getAdminName().isEmpty() || getGmail().isEmpty() || getPassword().isEmpty() || getUdId().isEmpty())
+        // We are not checking for the password cause if we login through social media then there is no password
+        if (getAdminName().isEmpty() || getGmail().isEmpty() || getUdId().isEmpty())
         {
             return false;
         }

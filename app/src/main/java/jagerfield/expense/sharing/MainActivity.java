@@ -22,13 +22,13 @@ import jagerfield.utilities.lib.PermissionsUtil.Results.IGetPermissionResult;
 
 public class MainActivity extends AppCompatActivity {
 
-    public IRetrofit restApi;
-    private GoogleApiClient mGoogleApiClient;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        PreferenceUtil.clearAllPreferences(this);
 
         if (isRegistered())
         {

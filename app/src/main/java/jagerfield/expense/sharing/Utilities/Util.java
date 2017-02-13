@@ -2,15 +2,12 @@ package jagerfield.expense.sharing.Utilities;
 
 import android.Manifest;
 import android.app.Activity;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+import android.app.AlertDialog;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
-
 import jagerfield.expense.sharing.R;
+import jagerfield.utilities.lib.AppUtilities;
 
 public class Util
 {
@@ -32,21 +29,16 @@ public class Util
             Manifest.permission.CAMERA
     };
 
-    public static void launchFragment(AppCompatActivity context, Fragment fragment)
+    public static void launchFragment(AppCompatActivity activity, Fragment fragment)
     {
-        if (!isNetworkAvailable(context))
-        {
-            Toast.makeText(context, "There is no internet connection", Toast.LENGTH_SHORT).show();
-            return;
-        }
 
-        setSoftKeyBoard(context, false);
+        AppUtilities.setSoftKeyboard(activity, false);
 
         /**
          *  Empty backstack
          *
          */
-        FragmentManager fm = context.getSupportFragmentManager();
+        FragmentManager fm = activity.getSupportFragmentManager();
         int count = fm.getBackStackEntryCount();
         if (count > 0)
         {
@@ -65,67 +57,13 @@ public class Util
                 .commit();
     }
 
-    public static void setSoftKeyBoard(Activity activity, boolean mode) {
-        if (activity == null) {
-            return;
-        }
-
-        InputMethodManager inputMethodManager = (InputMethodManager) activity.getSystemService(activity.INPUT_METHOD_SERVICE);
-
-        if (mode) {
-            inputMethodManager.toggleSoftInput(0, InputMethodManager.SHOW_IMPLICIT);
-        } else {
-            if (inputMethodManager != null) {
-                if (activity == null)
-                    return;
-                if (activity.getCurrentFocus() == null)
-                    return;
-                if (activity.getCurrentFocus().getWindowToken() == null)
-                    return;
-                inputMethodManager.hideSoftInputFromWindow(activity.getCurrentFocus().getWindowToken(), 0);
-            }
-        }
+    public static void showAlertMessage(Activity activity, String title, String message)
+    {
+        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+        builder.setCancelable(true);
+        builder.setTitle(title);
+        builder.setMessage(message);
+        builder.show();
     }
-
-    public static boolean isNetworkAvailable(Activity activity) {
-        ConnectivityManager cm = (ConnectivityManager) activity.getSystemService(activity.CONNECTIVITY_SERVICE);
-        NetworkInfo networkInfo = cm.getActiveNetworkInfo();
-        if (networkInfo != null && networkInfo.isConnected()) {
-            return true;
-        }
-
-        return false;
-    }
-
-//    public synchronized static boolean hasPermission(Activity activity, String permission)
-//    {
-//        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M)
-//        {
-//            return true;
-//        }
-//
-//        if (permission==null || permission.isEmpty())
-//        {
-//
-//            return false;
-//        }
-//
-//        String[] permissionsArray = {permission};
-//
-//        for (int i = 0; i < permissionsArray.length; i++)
-//        {
-//            if (activity.checkSelfPermission(permissionsArray[i]) == PackageManager.PERMISSION_DENIED)
-//            {
-//                Log.w(TAG_LIB, permission + " permission is missing.");
-//                return false;
-//            }
-//            else
-//            {
-//                return true;
-//            }
-//        }
-//
-//        return false;
-//    }
 
 }

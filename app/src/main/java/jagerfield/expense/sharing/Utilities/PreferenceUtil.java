@@ -57,6 +57,20 @@ public class PreferenceUtil
         return e.getString(key, onNull);
     }
 
+    public static void clearAllPreferences(Context c)
+    {
+        SharedPreferences.Editor e = c.getSharedPreferences(PREFERENCES_GENERAL, c.MODE_PRIVATE).edit();
+        e.clear();
+        e.commit();
+    }
+
+    public static void clearPreference(Context c, String key)
+    {
+        SharedPreferences.Editor e = c.getSharedPreferences(PREFERENCES_GENERAL, c.MODE_PRIVATE).edit();
+        e.remove(key);
+        e.commit();
+    }
+
 }
 
 

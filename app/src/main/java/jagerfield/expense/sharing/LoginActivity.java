@@ -6,6 +6,8 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
 import com.google.android.gms.auth.api.Auth;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
@@ -13,7 +15,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInResult;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.GoogleApiClient;
-
 import jagerfield.expense.sharing.Models.Admin;
 import jagerfield.expense.sharing.Utilities.PreferenceUtil;
 import jagerfield.expense.sharing.Utilities.Util;
@@ -36,7 +37,9 @@ public class LoginActivity extends AppCompatActivity
         signInButton = (SignInButton) findViewById(R.id.sign_in_button);
         signInButton.setSize(SignInButton.SIZE_STANDARD);
 
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        signInButton.setOnClickListener(new View.OnClickListener()
+        {
+
             @Override
             public void onClick(View v)
             {
@@ -45,7 +48,8 @@ public class LoginActivity extends AppCompatActivity
         });
     }
 
-    private void initializeGoogleSigninApi() {
+    private void initializeGoogleSigninApi()
+    {
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestEmail()
                 .build();
@@ -53,7 +57,8 @@ public class LoginActivity extends AppCompatActivity
         // Build a GoogleApiClient with access to the Google Sign-In API and the
         // options specified by gso.
         mGoogleApiClient = new GoogleApiClient.Builder(this)
-                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener() {
+                .enableAutoManage(this, new GoogleApiClient.OnConnectionFailedListener()
+                {
                     @Override
                     public void onConnectionFailed(@NonNull ConnectionResult connectionResult)
                     {
@@ -64,7 +69,14 @@ public class LoginActivity extends AppCompatActivity
                 .build();
     }
 
-    private void signIn() {
+    private void signIn()
+    {
+//        if (!AppUtilities.getNetworkUtil().hasInternetConnection(this))
+//        {
+//            Util.showAlertMessage(this, "Attention", "There is no internet connection");
+//            return;
+//        }
+        
         Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
         startActivityForResult(signInIntent, RC_SIGN_IN);
     }
@@ -87,10 +99,10 @@ public class LoginActivity extends AppCompatActivity
         if (result.isSuccess())
         {
             Admin admin = new Admin();
-            GoogleSignInAccount acct = result.getSignInAccount();
-            admin.setGmail(acct.getEmail());
-            admin.setAdminName(acct.getGivenName() + " " + acct.getFamilyName());
-            admin.setAdminImage(acct.getPhotoUrl().toString());
+            GoogleSignInAccount signInAccount = result.getSignInAccount();
+            admin.setGmail(signInAccount.getEmail());
+            admin.setAdminName(signInAccount.getGivenName() + " " + signInAccount.getFamilyName());
+            admin.setAdminImage(signInAccount.getPhotoUrl().toString());
             admin.setUdId(AppUtilities.getDeviceUtil().getAndroidId(this));
 
             String jsonStr = admin.convertObjToJsonStr(admin);
@@ -98,7 +110,6 @@ public class LoginActivity extends AppCompatActivity
             PreferenceUtil.setString(this, Util.ADMIN_JACKSON_STRING, jsonStr);
 
             Intent intent = new Intent(this, MainActivity.class);
-//            intent.putExtra(Util.LOGIN_RESULT, true);
             startActivity(intent);
         }
         else
