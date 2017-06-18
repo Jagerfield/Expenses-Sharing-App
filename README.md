@@ -1,10 +1,10 @@
-#Expenses Sharing App (work in progress)
+# Expenses Sharing App - Design
 
-##Project Goal
+## Project Goal
 The app will enable users to create events and share their expenses. It will provide participants 
 with notifications of any changes, and enables them to communicate on the events level. 
 
-##App Specifications - Functionality Description (Under development)
+## App Specifications - Functionality Description (Under development)
 ```
 1. The app is intended for use in Android devices only. 
 2. App users will register in the app using Gmail only. This will ensure that each user is unique. 
@@ -34,7 +34,7 @@ with notifications of any changes, and enables them to communicate on the events
        in the event. Up on receiving the notification, the app syncs the event information with the server.     
 ```
 
-##Project current status
+## Project current status
 ```
 1. Developed wire-frames of GUI on paper.
 2. Created an app to access data on a Wamp Server. Wrote the server-side APIs in php for test purposes. 
@@ -61,16 +61,16 @@ with notifications of any changes, and enables them to communicate on the events
 7. Complete development of the app core logic, and GUI development using material design guidelines.
 ```
 
-##Database Table Relationsships 
+## Database Table Relationsships 
 
-###Database Table Relationsships 
+### Database Table Relationsships 
 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Expenses%20Sharing%20DB.PNG" width="700"/> &#160;
 
-###Admin Login/Logout flow design
+### Admin Login/Logout flow design
 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Diagrams/Admin%20login_logout%20flow.png" width="700"/> &#160;
 
-###Admin Gmail Login flow design
+### Admin Gmail Login flow design
 I will probably only use this as the standard. 
 <img src="https://github.com/Jagerfield/Expenses-Sharing-App/blob/master/msc/Diagrams/Admin_Login_Gmail.PNG" width="700"/> &#160;
